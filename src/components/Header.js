@@ -13,8 +13,8 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
+import PetsIcon from '@material-ui/icons/Pets';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,7 +76,18 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
   },
 }));
-
+const drawerItems = [
+  {
+    id: 1,
+    icon: <PetsIcon />,
+    name: 'Pets'
+  },
+  {
+    id: 2,
+    icon: <HomeIcon />,
+    name: 'Home'
+  }
+]
 function Header() {
 
   const classes = useStyles();
@@ -99,8 +110,8 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            FureverFriendFinder
+          <Typography className={classes.title} variant="h4" noWrap>
+            Furever Friend Finder
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -124,22 +135,14 @@ function Header() {
       onClose={() => setOpen(false)}
       >
       <List className={classes.list}>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        {drawerItems.map((item, index) => (
+          <ListItem button key={index}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.name} />
           </ListItem>
         ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
       </SwipeableDrawer>
       
     </div>
