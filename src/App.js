@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid} from '@material-ui/core'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Content from './components/content'
 import './App.css';
 
 function App() {
@@ -14,39 +15,7 @@ function App() {
         <Grid item container>
           <Grid item xs={0} sm={2} />
           <Grid item xs={12} sm={8}>
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           Content
-           ContentContent
-           Content
-           Content
-           Content
-           Content
-           Content
-
-           Content
-           Content
-           Content
-           Content
+           <Content />
           </Grid>
           <Grid item xs={0} sm={2} />
         </Grid>
