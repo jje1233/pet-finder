@@ -79,14 +79,15 @@ const useStyles = makeStyles((theme) => ({
 const drawerItems = [
   {
     id: 1,
-    icon: <PetsIcon />,
-    name: 'Pets'
+    icon: <HomeIcon />,
+    name: 'Home'
   },
   {
     id: 2,
-    icon: <HomeIcon />,
-    name: 'Home'
-  }
+    icon: <PetsIcon />,
+    name: 'Pets'
+  },
+
 ]
 function Header() {
 
