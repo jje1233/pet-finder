@@ -35,7 +35,11 @@ const useStyles = makeStyles((theme) => ({
     },
     listSubheader: {
         fontSize: '16px'
-    }
+    },
+    btn: {
+        padding: '14px',
+        
+    },
   }));
   
 function ListItemLink(...props) {
@@ -55,7 +59,10 @@ function Footer() {
                     <Typography variant="h4" className={classes.title}>
                     Never miss a new pet
                     </Typography>
-                    <><TextField  id="filled-basic" label="E-Mail" variant="filled" className={classes.textArea}></TextField><Button variant='outlined' size='large'>Submit</Button></>
+                    <Grid item>
+                    <TextField  id="filled-basic" label="E-Mail" variant="filled"></TextField><Button variant='outlined' size='large' className={classes.btn}>Submit</Button>
+                    </Grid>
+                    
                     </List>
                 </Grid>
                 
