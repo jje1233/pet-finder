@@ -13,7 +13,7 @@ root: {
 },
 }));
 
-export default function BasicTextFields() {
+function SearchBar() {
 const classes = useStyles();
 
 return (
