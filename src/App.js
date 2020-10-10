@@ -4,8 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Content from './components/content'
 import SearchBar from './components/SearchBar'
-import HeroVideo from './components/HeroVideo'
-import HeroOverlay from './components/HeroOverlay'
+
 import './App.css';
 
 function App() {
