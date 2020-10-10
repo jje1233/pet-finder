@@ -7,6 +7,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Button from '@material-ui/core/Button'
+import SearchIcon from '@material-ui/icons/Search'
 
 
   
@@ -23,6 +25,9 @@ root: {
     sel: {
         paddingBottom: '16px'
     },
+    inpLbl:{
+        paddingBottom: '16px'
+    }
 },
 }));
 
@@ -44,25 +49,29 @@ const handleChange = (event) => {
 return (
     
     <form className={classes.root} noValidate autoComplete="off">
-    <Grid container>
-        <Grid item xs={6}>
+    <Grid container spacing={2}>
+        <Grid item xs={8}>
             <TextField fullWidth id="filled-basic" label="Search by Zip Code, City, or State" variant="filled" />
         </Grid>
-        <Grid item xs={2}>
-            <InputLabel htmlFor="pet-native-helper">Looking for</InputLabel>
-            <NativeSelect className={classes.sel}
+        <Grid item xs={3} >
+            <InputLabel className={classes.inpLbl} htmlFor="pet-native-helper">pet</InputLabel>
+            <NativeSelect fullWidth  className={classes.sel}
             value={petName.name}
             onChange={handleChange}
             inputProps={{
-                name: 'petName',
+                name: 'pet',
                 id: 'pet-native-helper',
             }}
             >
-            <option aria-label="None" value="" />
-            <option value={10}>Dog<i class="fas fa-dog"></i></option>
-            <option value={20}>Cat<i class="fas fa-cat"></i></option>
+            <option aria-label="select a pet" value="Select a pet" />
+            <option value={10}>Dog</option>
+            <option value={20}>Cat</option>
             </NativeSelect>
-            
+        </Grid>
+        <Grid item xs={1}>
+        <Button variant="contained" color="primary">
+             <SearchIcon />
+        </Button>
         </Grid>
     </Grid>
     

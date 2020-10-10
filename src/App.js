@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Content from './components/content'
 import SearchBar from './components/SearchBar'
+import HeroVideo from './components/HeroVideo'
 import './App.css';
 
 function App() {
@@ -13,9 +14,12 @@ function App() {
         <Grid item>
           <Header />
         </Grid>
+        <Grid item xs={12}>
+          <HeroVideo />
+        </Grid>
         <Grid item container>
           <Grid item xs={0} sm={2} />
-          <Grid item xs={12} sm={6} >
+          <Grid item xs={12} sm={8} >
               <SearchBar />
           </Grid>
           <Grid item xs={0} sm={2} />
