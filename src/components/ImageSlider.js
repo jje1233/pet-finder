@@ -1,35 +1,31 @@
 import React from 'react'
-import Carousel from 'react-material-ui-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function ImageSlider(props) {
 
-    var items = [
-        {
-            img: 'Images/petImg2.jpg'
-        },
-        {
-            img: 'Images/petImg1.jpg'
-        },
-        {
-            img: 'Images/petImg3.jpg'
-        },
-        {
-            img: 'Images/petImg4.jpg'
-        },
-    ]
-    return(
-        <Carousel  navButtonsAlwaysVisible animation='slide' interval='3000'>
-            {
-                items.map((item, index) => <ImgItem key={index} item={item} />)
-            }
-        </Carousel>
-    )
-}
+    
+        return (
+            <Carousel  autoplay showArrows={true}  showThumbs={false} style={{height: '80vh', width: '100%'}}>
+                <div>
+                    <img src="Images/petImg2.jpg" />
 
-function ImgItem(props) {
-    return(
-        <img src={props.item.img} style={{maxHeight: '100%', width: '100%', objectFit: 'cover'}} />
-    )
+                </div>
+                <div>
+                    <img src="Images/petImg1.jpg" />
+
+                </div>
+                <div>
+                    <img src="Images/petImg3.jpg" />
+
+                </div>
+                <div>
+                    <img src="Images/petImg4.jpg" />
+
+                </div>
+            </Carousel>
+        );
+    
 }
 
 export default ImageSlider

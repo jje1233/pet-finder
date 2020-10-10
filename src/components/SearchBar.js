@@ -16,8 +16,10 @@ const useStyles = makeStyles((theme) => ({
 root: {
     '& > *': {
     marginTop: theme.spacing(1),
-    
     marginBottom: theme.spacing(1),
+    position: 'sticky',
+    bottom: 0,
+    left: 0,
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
