@@ -19,14 +19,14 @@ const useStyles = makeStyles((theme) => ({
       
     },
     appbar: {
-        backgroundColor: '#E7717D'
+        backgroundColor: '#17252A'
     },
     title: { 
       flexGrow: 1,
       padding: '0.5rem'
     },
     list: {
-     color: '#12333D'
+     color: '#3AAFA9'
     },
     textArea: {
         margin: theme.spacing(1),
@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
         color: 'black'
     },
     listSubheader: {
-        fontSize: '16px'
+        fontSize: '16px',
+        color: '#DEF2F1'
     },
     btn: {
         padding: '14px',

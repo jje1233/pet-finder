@@ -100,7 +100,7 @@ function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor: '#E7717D', color: '#12333D'}}>
+      <AppBar position="static" style={{backgroundColor: '#17252A', color: '#3AAFA9'}}>
         
         <Toolbar>
           <IconButton onClick={handleDrawer}

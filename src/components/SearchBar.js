@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 root: {
     '& > *': {
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    
     marginBottom: theme.spacing(1),
     },
     selectEmpty: {
@@ -50,10 +50,10 @@ return (
     
     <form className={classes.root} noValidate autoComplete="off">
     <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid item xs={7} sm={8}>
             <TextField fullWidth id="filled-basic" label="Search by Zip Code, City, or State" variant="filled" />
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={3} sm={3}>
             <InputLabel className={classes.inpLbl} htmlFor="pet-native-helper">pet</InputLabel>
             <NativeSelect fullWidth  className={classes.sel}
             value={petName.name}
@@ -68,7 +68,7 @@ return (
             <option value={20}>Cat</option>
             </NativeSelect>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2} sm={1}>
         <Button variant="contained" color="primary">
              <SearchIcon />
         </Button>
