@@ -7,6 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios'
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -17,8 +20,27 @@ const useStyles = makeStyles({
   },
 });
 
+window.onload= function (){
+  const petForm = document.querySelector('#pet-search')
+
+petForm.addEventListener('submit', getAnimals)
+
+function getAnimals(e){
+  e.preventDefault()
+
+  const animal = document.querySelector('#pet').value
+  const zip = document.querySelector('#zip').value
+
+  axios.get(`https://cors-anywhere.herokuapp.com/GET https://api.petfinder.com/v2/animals/find?type=${animal}&location=${zip}`)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err))
+}
+  }
+
 function PetCards() {
   const classes = useStyles();
+
 
   return (
     <Card >

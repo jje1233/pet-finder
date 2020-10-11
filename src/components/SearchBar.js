@@ -33,45 +33,46 @@ root: {
 },
 }));
 
+
 function SearchBar() {
 const classes = useStyles();
 
 const [petName, setPetName] = useState({
-    name: '',
+    name: 'pet',
   });
 const handleChange = (event) => {
     const name = event.target.name;
     setPetName({
       ...petName,
-      [name]: event.target.value,
+      name: event.target.value,
     });
   };
 
 
 return (
     
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate id='pet-search' autoComplete="off">
     <Grid container spacing={2}>
         <Grid item xs={7} sm={8}>
-            <TextField fullWidth id="filled-basic" label="Search by Zip Code, City, or State" variant="filled" />
+            <TextField fullWidth  id='zip' label="Enter a Zip Code" variant="filled" />
         </Grid>
         <Grid item xs={3} sm={3}>
-            <InputLabel className={classes.inpLbl} htmlFor="pet-native-helper">pet</InputLabel>
-            <NativeSelect fullWidth  className={classes.sel}
+            <InputLabel className={classes.inpLbl} htmlFor="pet">Pet</InputLabel>
+            <NativeSelect fullWidth  className={classes.sel} 
             value={petName.name}
             onChange={handleChange}
             inputProps={{
                 name: 'pet',
-                id: 'pet-native-helper',
+                id: 'pet',
             }}
             >
-            <option aria-label="select a pet" value="Select a pet" />
-            <option value={10}>Dog</option>
-            <option value={20}>Cat</option>
+            <option aria-label="" value="" />
+            <option value={'Dog'}>Dog</option>
+            <option value={'Cat'}>Cat</option>
             </NativeSelect>
         </Grid>
         <Grid item xs={2} sm={1}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" type="submit">
              <SearchIcon />
         </Button>
         </Grid>

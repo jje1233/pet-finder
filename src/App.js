@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import Content from './components/content'
 import SearchBar from './components/SearchBar'
 import ImageSlider from './components/ImageSlider'
-
+import axios from 'axios'
 import './App.css';
 
 function App() {
