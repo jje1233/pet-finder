@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Grid} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -35,6 +35,37 @@ root: {
 
 
 function SearchBar() {
+    
+    const [accessToken, setAccessToken] = useState(null)
+    const [update, setUpdate] = useState(0)
+
+
+      
+    const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials")
+    params.append("client_id", process.env.REACT_APP_PET_FINDER_KEY)
+    params.append("client_secret", process.env.REACT_APP_PET_FINDER_SECRET)
+
+    
+    const fetchToken = async () => {
+      const apiCall = await fetch('https://api.petfinder.com/v2/oauth2/token',{
+      method: "POST",    
+      body: params,
+      })
+
+      const token = await apiCall.json()
+      
+      setAccessToken(token.access_token)
+    }
+
+    useEffect(()=>{
+      fetchToken()
+    },[update])
+
+ 
+  console.log(accessToken)
+
+
 const classes = useStyles();
 
 const [petName, setPetName] = useState({
@@ -47,7 +78,17 @@ const handleChange = (event) => {
       name: event.target.value,
     });
   };
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const animal = document.querySelector('#pet').value
+    const zip = document.querySelector('#zip').value
+    return fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}`, {
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then(res => res.json()).then(data => console.log(data))
+}
 
 return (
     
@@ -67,12 +108,12 @@ return (
             }}
             >
             <option aria-label="" value="" />
-            <option value={'Dog'}>Dog</option>
-            <option value={'Cat'}>Cat</option>
+            <option value={'dog'}>Dog</option>
+            <option value={'cat'}>Cat</option>
             </NativeSelect>
         </Grid>
         <Grid item xs={2} sm={1}>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>
              <SearchIcon />
         </Button>
         </Grid>

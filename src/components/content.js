@@ -8,12 +8,7 @@ function Content() {
            <Grid item xs={12} sm={4}>
                 <PetCards />
            </Grid>
-           <Grid item xs={12} sm={4}>
-            <PetCards />
-           </Grid>
-           <Grid item xs={12} sm={4}>
-            <PetCards />
-           </Grid>
+           
        </Grid>
     )
 }

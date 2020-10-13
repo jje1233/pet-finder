@@ -6,7 +6,7 @@ function ImageSlider(props) {
 
     
         return (
-            <Carousel  showStatus={false} autoPlay showArrows={true}  showThumbs={false} style={{height: '80vh', width: '100%'}}>
+            <Carousel  infiniteLoop showStatus={false} autoPlay showArrows={true}  showThumbs={false} >
                 <div>
                     <img src="Images/petImg2.jpg" />
 
