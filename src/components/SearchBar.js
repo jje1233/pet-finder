@@ -42,37 +42,54 @@ const classes = useStyles();
 const [petName, setPetName] = useState({
     name: 'pet',
   });
-const handleChange = (event) => {
-    const name = event.target.name;
+const [miles, setMiles] = useState({
+  miles: 100,
+})
+const petHandler = (event) => {
+    const name = event.target.name
     setPetName({
       ...petName,
       name: event.target.value,
     });
   };
+
+const mileHandler = (event) => {
+  const miles = event.target.name
+  setMiles({
+    ...miles,
+    miles: event.target.value,
+  })
+}
   const handleSubmit = (event) => {
     event.preventDefault();
     const animal = document.querySelector('#pet').value
     const zip = document.querySelector('#zip').value
-    return fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}`, {
+    const miles = document.querySelector('#miles').value
+    return fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}`, {
     headers: {
         'Authorization': `Bearer ${tokenVal.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
         }
-    }).then(res => res.json()).then(data => console.log(data))
+    })
+    .then(res => res.json())
+    .then(data => {
+      tokenVal.setPets(data)
+      tokenVal.setLoaded(true)
+    })
   }
 
 return (
    
         <form className={classes.root} noValidate id='pet-search' autoComplete="off">
         <Grid container spacing={2}>
-            <Grid item xs={7} sm={8}>
+            <Grid item xs={5} sm={8}>
                 <TextField fullWidth  id='zip' label="Enter a Zip Code" variant="filled" />
             </Grid>
-            <Grid item xs={3} sm={3}>
+            <Grid item xs={2}>
                 <InputLabel className={classes.inpLbl} htmlFor="pet">Pet</InputLabel>
                 <NativeSelect fullWidth  className={classes.sel} 
                 value={petName.name}
-                onChange={handleChange}
+                onChange={petHandler}
                 inputProps={{
                     name: 'pet',
                     id: 'pet',
@@ -83,7 +100,26 @@ return (
                 <option value={'cat'}>Cat</option>
                 </NativeSelect>
             </Grid>
-            <Grid item xs={2} sm={1}>
+            <Grid item xs={2}>
+            <InputLabel className={classes.inpLbl} htmlFor="pet">Miles</InputLabel>
+                <NativeSelect fullWidth  className={classes.sel} 
+                value={miles.miles}
+                onChange={mileHandler}
+                inputProps={{
+                    name: 'miles',
+                    id: 'miles',
+                }}
+                >
+                <option aria-label="" value="" />
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={30}>30</option>
+                <option value={40}>40</option>
+                <option value={50}>50</option>
+                <option value={60}>60</option>
+                </NativeSelect>
+            </Grid>
+            <Grid item xs={1}>
             <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>
                  <SearchIcon />
             </Button>

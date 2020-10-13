@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {Grid} from '@material-ui/core'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -13,7 +13,9 @@ function App() {
 
   const [token, setToken] = useState(null)
   const [update, setUpdate] = useState(0)
-
+  const [pets, setPets] = useState(null)
+  const [loaded, setLoaded] = useState(false)
+  
 
       
     const params = new URLSearchParams();
@@ -41,7 +43,7 @@ function App() {
   return (
     
       <div className="App">
-        <TokenContext.Provider value={{token}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded}}>
           
              <Grid container direction='column'>
              <Grid item>
