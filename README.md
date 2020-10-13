@@ -9,7 +9,7 @@ The project will feature:
 3rd party dependencies will include:
 
 - Axios (Requests to database)
-- React Tabs (Product Details page)
+- Material UI
 
 Live version will be available at: www.fureverfriendfinder.xyz
 
