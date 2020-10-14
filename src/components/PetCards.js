@@ -17,25 +17,25 @@ const useStyles = makeStyles({
     height: 260,
   },
 });
-function PetCards() {
+function PetCards(props) {
   
   const classes = useStyles();
-  let petContext = useContext(TokenContext)
+  let {loaded} = useContext(TokenContext)
   
     return (
-      petContext.loaded ? (<Card className={classes.root}>
+      loaded ? (<Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={petContext.pets.animals[0].photos.[0].large}
+            image={props.img}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {petContext.pets.animals[0].name}
+              {props.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {petContext.pets.animals[0].description}
+              {props.desc}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -43,7 +43,7 @@ function PetCards() {
           <Button size="small" color="primary">
             Share
           </Button>
-          <Button size="small" color="primary" href={petContext.pets.animals[0].url}>
+          <Button size="small" color="primary" href={props.url}>
             Learn More
           </Button>
         </CardActions>
