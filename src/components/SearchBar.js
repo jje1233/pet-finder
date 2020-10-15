@@ -36,7 +36,7 @@ root: {
 
 function SearchBar() {
 
-const tokenVal = useContext(TokenContext)
+const petInfo = useContext(TokenContext)
 const classes = useStyles();
 
 const [petName, setPetName] = useState({
@@ -60,22 +60,21 @@ const mileHandler = (event) => {
     miles: event.target.value,
   })
 }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const animal = document.querySelector('#pet').value
     const zip = document.querySelector('#zip').value
     const miles = document.querySelector('#miles').value
-    return fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}`, {
+    const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}`, {
     headers: {
-        'Authorization': `Bearer ${tokenVal.token}`,
+        'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    .then(res => res.json())
-    .then(data => {
-      tokenVal.setPets(data)
-      tokenVal.setLoaded(true)
-    })
+    .then((data => data.json()))
+    petInfo.setPets(data.animals)
+    petInfo.setLoaded(true)
+    console.log(data.animals)
   }
 
 return (
