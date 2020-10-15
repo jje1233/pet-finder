@@ -5,13 +5,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Grid} from '@material-ui/core'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,16 +43,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
   
-function ListItemLink(...props) {
-    return <ListItem button component="a" {...props}/>;
-}
+  
 
 function Footer() {
     const classes = useStyles();
   
     return (
       <div className={classes.root}>
-        <Grid container xs={12}>
+        <Grid container>
         <AppBar position="static" className={classes.appbar}>
             <Toolbar>
                 <Grid item xs={3}>

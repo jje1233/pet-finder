@@ -8,19 +8,19 @@ function ImageSlider(props) {
         return (
             <Carousel  infiniteLoop showStatus={false} autoPlay showArrows={true}  showThumbs={false} >
                 <div>
-                    <img src="Images/petImg2.jpg" />
+                    <img src="Images/petImg2.jpg"  alt='hero 1'/>
 
                 </div>
                 <div>
-                    <img src="Images/petImg1.jpg" />
+                    <img src="Images/petImg1.jpg"  alt='hero 2' />
 
                 </div>
                 <div>
-                    <img src="Images/petImg3.jpg" />
+                    <img src="Images/petImg3.jpg"  alt='hero 3'/>
 
                 </div>
                 <div>
-                    <img src="Images/petImg4.jpg" />
+                    <img src="Images/petImg4.jpg"  alt='hero 4'/>
 
                 </div>
             </Carousel>

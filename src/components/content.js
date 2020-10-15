@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext} from 'react'
 import PetCards from './PetCards'
 import {Grid} from '@material-ui/core'
 import {TokenContext} from './context'
-import { Photo, PhotoSharp } from '@material-ui/icons'
+
 
 function Content() {
     const petInfo = useContext(TokenContext)

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,7 +11,7 @@ import TokenContext from './context'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    
   },
   media: {
     height: 260,
