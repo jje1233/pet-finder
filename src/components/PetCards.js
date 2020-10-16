@@ -43,7 +43,7 @@ function PetCards(props) {
           <Button size="small" color="primary">
             Share
           </Button>
-          <Button size="small" color="primary" href={props.url}>
+          <Button size="small" color="primary" href={props.url} target="_blank" rel="noopener" rel="noreferrer">
             Learn More
           </Button>
         </CardActions>

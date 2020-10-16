@@ -62,16 +62,18 @@ const mileHandler = (event) => {
     const animal = document.querySelector('#pet').value
     const zip = document.querySelector('#zip').value
     const miles = document.querySelector('#miles').value
-    const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}`, {
+    const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
     .then((data => data.json()))
-    petInfo.setPets(data.animals)
+    petInfo.setPets(data)
+    
+    console.log(data)
+    petInfo.setTotalResults(data.pagination.total_count) 
     petInfo.setLoaded(true)
-    console.log(data.animals)
   }
 
 return (

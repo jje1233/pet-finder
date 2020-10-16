@@ -14,6 +14,8 @@ function App() {
   const [update, setUpdate] = useState(0)
   const [pets, setPets] = useState(null)
   const [loaded, setLoaded] = useState(false)
+  const [page, setPage] = useState(1)
+  const [totalResults, setTotalResults] = useState(0)
   
 
       
@@ -42,7 +44,7 @@ function App() {
   return (
     
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults}}>
           
              <Grid container direction='column'>
              <Grid item>
