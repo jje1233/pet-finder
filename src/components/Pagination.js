@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Pagination(props){
-    
+    /*
     const pageLinks=[]
 
     for(let i=1; i <= props.pages + 1; i++){
@@ -20,6 +20,7 @@ function Pagination(props){
             </div>
         </div>
     )
+    */
 }
 
 export default Pagination

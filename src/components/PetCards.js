@@ -25,7 +25,7 @@ function PetCards(props) {
   
     return (
       loaded ? (<Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea href={props.url} target="_blank" rel="noopener" rel="noreferrer">
           <CardMedia
             className={classes.media}
             image={props.img}

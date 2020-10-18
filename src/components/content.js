@@ -2,12 +2,12 @@ import React, {useContext} from 'react'
 import PetCards from './PetCards'
 import {Grid} from '@material-ui/core'
 import {TokenContext} from './context'
-import Pagination from './Pagination'
+import Pagination from 'react-js-pagination'
 
 
 function Content() {
     const petInfo = useContext(TokenContext)
-        const nextPage = async (pageNumber) => {
+        const handleChange = async (pageNumber) => {
         const animal = document.querySelector('#pet').value
         const zip = document.querySelector('#zip').value
         const miles = document.querySelector('#miles').value
@@ -24,8 +24,7 @@ function Content() {
         petInfo.setPage(pageNumber)
         petInfo.setLoaded(true)
   }
-
-  const numberPages = Math.floor(petInfo.totalResults /20) 
+ 
 
     
 
@@ -51,8 +50,15 @@ function Content() {
              })
  
              }
-             <Grid item xs={4}>
-             {petInfo.totalResults > 20 ? (<Pagination pages={numberPages} nextPage={nextPage} currentPage={petInfo.page}/>) : ('')} 
+             <Grid item xs={12}>
+                <Pagination 
+                    activePage={petInfo.page}
+                    
+                    itemsCountPerPage={petInfo.totalResults / 20}
+                    totalItemsCount={petInfo.totalResults}
+                    pageRangeDisplayed={5}
+                    onChange={handleChange}
+                />
              </Grid>
             
             
