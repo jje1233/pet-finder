@@ -38,6 +38,9 @@ function Content() {
                  return <Grid item xs={12} sm={4} key={pet.id}>
                             <PetCards 
                                 name={pet.name}
+                                breed={pet.breeds.primary}
+                                gender={pet.gender}
+                                size={pet.size}
                                 desc={pet.description}
                                 url={pet.url}
                                 img={pet.photos[0]?.large}

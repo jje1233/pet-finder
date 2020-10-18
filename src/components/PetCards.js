@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TokenContext from './context'
+import PetsIcon from '@material-ui/icons/Pets';
 
 const useStyles = makeStyles({
   root: {
@@ -28,20 +29,20 @@ function PetCards(props) {
           <CardMedia
             className={classes.media}
             image={props.img}
-            title="Contemplative Reptile"
+            title={props.name}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {props.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.desc}
+            {props.gender} || {props.size} || {props.breed} 
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Share
+            <PetsIcon />
           </Button>
           <Button size="small" color="primary" href={props.url} target="_blank" rel="noopener" rel="noreferrer">
             Learn More
