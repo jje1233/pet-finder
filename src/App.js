@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {Grid} from '@material-ui/core'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Content from './components/content'
+// import Content from './components/content'
 import SearchBar from './components/SearchBar'
 import ImageSlider from './components/ImageSlider'
+import SearchResults from './pages/SearchResults'
 import './App.css';
 import {TokenContext} from './components/context'
 
@@ -68,9 +69,16 @@ function App() {
              <Grid item container>
                <Grid item xs={false} sm={2} />
                <Grid item xs={12} sm={8}>
-                <Content />
+                
                </Grid>
                <Grid item xs={false} sm={2} />
+             </Grid>
+             <Grid item container>
+              
+               <Grid item xs={11} >
+                <SearchResults />
+               </Grid>
+               
              </Grid>
              <Grid item xs={12}>
                  <Footer />

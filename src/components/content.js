@@ -64,7 +64,7 @@ function Content() {
             
             
         </Grid>
-        ) : (<h1>yo</h1>)
+        ) : (<h1>Results will be displayed here once you start a search!</h1>)
       
     )
 }
