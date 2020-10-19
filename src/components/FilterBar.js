@@ -39,9 +39,14 @@ function FilterBar() {
         small: false,
         medium: false,
         large: false,
-        xLarge: false
+        xLarge: false,
 
       });
+      const [selectedBreed, setSelectedBreed] = useState('')
+      const handleBreed = (event) => {
+        setSelectedBreed(event.target.value);
+      };
+
 
 
       
@@ -50,7 +55,7 @@ function FilterBar() {
         setState({ ...state, [event.target.name]: event.target.checked });
       }
 
-      const { baby, young, adult, senior, female, male, small, medium, large, xLarge } = state;
+      const { baby, young, adult, senior, female, male, small, medium, large, xLarge, breed} = state;
     
 
 const classes = useStyles();
@@ -128,15 +133,15 @@ const classes = useStyles();
                 </AccordionSummary>
                 <AccordionDetails>
                    
-                    <RadioGroup row style={{height: '600px', overflow: 'scroll'}}>
+                    <RadioGroup row style={{height: '600px', overflow: 'scroll'}} value={selectedBreed}>
                     
                         {petInfo.breeds.breeds.map(breed => {
                             return(
                             <FormControlLabel style={{width: '25ch'}} key={breed.name}
                             control={
                             <Radio
-                                checked={small}
-                                onChange={handleChange}
+                                value={breed.name}
+                                onChange={handleBreed}
                                 name={breed.name}
                                 color="primary"
                             />
@@ -145,51 +150,6 @@ const classes = useStyles();
                         />
                             )
                         })}
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={small}
-                                onChange={handleChange}
-                                name="small"
-                                color="primary"
-                            />
-                            }
-                            label="Small"
-                            
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={medium}
-                                onChange={handleChange}
-                                name="medium"
-                                color="primary"
-                            />
-                            }
-                            label="Medium"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={large}
-                                onChange={handleChange}
-                                name="large"
-                                color="primary"
-                            />
-                            }
-                            label="Large"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={xLarge}
-                                onChange={handleChange}
-                                name="xLarge"
-                                color="primary"
-                            />
-                            }
-                            label="XLarge"
-                        />
                     </RadioGroup>
                 </AccordionDetails>
             </Accordion>) : ('')}
