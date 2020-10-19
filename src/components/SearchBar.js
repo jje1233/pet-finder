@@ -57,8 +57,9 @@ const mileHandler = (event) => {
     miles: event.target.value,
   })
 }
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+const  submitWrapperFunction = async (event) => {
+  event.preventDefault()
+  const handleSubmit = async () => {
     const animal = document.querySelector('#pet').value
     const zip = document.querySelector('#zip').value
     const miles = document.querySelector('#miles').value
@@ -75,6 +76,22 @@ const mileHandler = (event) => {
     petInfo.setTotalResults(data.pagination.total_count) 
     petInfo.setLoaded(true)
   }
+  const handleBreeds = async () => {
+    const animal = document.querySelector('#pet').value
+    const data = await fetch(`https://api.petfinder.com/v2/types/${animal}/breeds`, {
+    headers: {
+        'Authorization': `Bearer ${petInfo.token}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then((data => data.json()))
+    petInfo.setBreeds(data)
+    console.log(data)
+  }
+  handleSubmit();
+  handleBreeds();
+}
+  
 
 return (
    
@@ -118,7 +135,7 @@ return (
                 </NativeSelect>
             </Grid>
             <Grid item xs={1}>
-            <Button variant="contained" color="primary" type="submit" size='large' onClick={handleSubmit}>
+            <Button variant="contained" color="primary" type="submit" size='large' onClick={submitWrapperFunction}>
                  <SearchIcon />
             </Button>
             </Grid>

@@ -1,18 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import TokenContext from './context'
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { green } from '@material-ui/core/colors';
+import RadioGroup from '@material-ui/core/RadioGroup'
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Radio from '@material-ui/core/Radio'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,49 +27,31 @@ const useStyles = makeStyles((theme) => ({
 
   
 function FilterBar() {
-    const [age, setAge] = useState({
+    const petInfo = useContext(TokenContext)
+
+    const [state, setState] = useState({
         baby: false,
         young: false,
         adult: false,
         senior: false,
-      });
-
-      const handleAge = (event) => {
-        setAge({ ...age, [event.target.name]: event.target.checked });
-      }
-    
-      const [breed, setBreed] = useState({
-        baby: false,
-        young: false,
-        adult: false,
-        senior: false,
-      });
-
-      const handleBreed = (event) => {
-        setBreed({ ...breed, [event.target.name]: event.target.checked });
-      }
-
-      const [gender, setGender] = useState({
-        female: false,
-        male: false,
-      });
-
-      const handleGender = (event) => {
-        setGender({ ...gender, [event.target.name]: event.target.checked });
-      }
-
-
-      const [size, setSize] = useState({
+        female: false, 
+        male: false, 
         small: false,
         medium: false,
         large: false,
-        xLarge: false,
+        xLarge: false
+
       });
 
-      const handleSize = (event) => {
-        setSize({ ...size, [event.target.name]: event.target.checked });
+
+      
+
+      const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
       }
 
+      const { baby, young, adult, senior, female, male, small, medium, large, xLarge } = state;
+    
 
 const classes = useStyles();
 
@@ -90,9 +71,9 @@ const classes = useStyles();
                         <FormControlLabel
                             control={
                             <Checkbox
-                                checked={age.baby}
-                                onChange={handleAge}
-                                name="Baby"
+                                checked={baby}
+                                onChange={handleChange}
+                                name="baby"
                                 color="primary"
                             />
                             }
@@ -101,9 +82,9 @@ const classes = useStyles();
                         <FormControlLabel
                             control={
                             <Checkbox
-                                checked={age.young}
-                                onChange={handleAge}
-                                name="Young"
+                                checked={young}
+                                onChange={handleChange}
+                                name="young"
                                 color="primary"
                             />
                             }
@@ -112,9 +93,9 @@ const classes = useStyles();
                         <FormControlLabel
                             control={
                             <Checkbox
-                                checked={age.adult}
-                                onChange={handleAge}
-                                name="Adult"
+                                checked={adult}
+                                onChange={handleChange}
+                                name="adult"
                                 color="primary"
                             />
                             }
@@ -123,9 +104,9 @@ const classes = useStyles();
                         <FormControlLabel
                             control={
                             <Checkbox
-                                checked={age.senior}
-                                onChange={handleAge}
-                                name="Senior"
+                                checked={senior}
+                                onChange={handleChange}
+                                name="senior"
                                 color="primary"
                             />
                             }
@@ -134,6 +115,9 @@ const classes = useStyles();
                     </FormGroup>
                 </AccordionDetails>
             </Accordion>
+
+            {petInfo.loaded ? ( 
+            
             <Accordion>
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -143,54 +127,75 @@ const classes = useStyles();
                 <Typography className={classes.heading}>Breed</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <FormGroup row>
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={breed.small}
-                            onChange={handleBreed}
-                            name="Small"
-                            color="primary"
+                   
+                    <RadioGroup row style={{height: '600px', overflow: 'scroll'}}>
+                    
+                        {petInfo.breeds.breeds.map(breed => {
+                            return(
+                            <FormControlLabel style={{width: '25ch'}} key={breed.name}
+                            control={
+                            <Radio
+                                checked={small}
+                                onChange={handleChange}
+                                name={breed.name}
+                                color="primary"
+                            />
+                            }
+                            label={breed.name}
                         />
-                        }
-                        label="Small"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={breed.medium}
-                            onChange={handleBreed}
-                            name="Medium"
-                            color="primary"
+                            )
+                        })}
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                checked={small}
+                                onChange={handleChange}
+                                name="small"
+                                color="primary"
+                            />
+                            }
+                            label="Small"
+                            
                         />
-                        }
-                        label="Medium"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={breed.large}
-                            onChange={handleBreed}
-                            name="Large"
-                            color="primary"
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                checked={medium}
+                                onChange={handleChange}
+                                name="medium"
+                                color="primary"
+                            />
+                            }
+                            label="Medium"
                         />
-                        }
-                        label="Large"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={breed.xLarge}
-                            onChange={handleBreed}
-                            name="XLarge"
-                            color="primary"
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                checked={large}
+                                onChange={handleChange}
+                                name="large"
+                                color="primary"
+                            />
+                            }
+                            label="Large"
                         />
-                        }
-                        label="XLarge"
-                    />
-                </FormGroup>
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                checked={xLarge}
+                                onChange={handleChange}
+                                name="xLarge"
+                                color="primary"
+                            />
+                            }
+                            label="XLarge"
+                        />
+                    </RadioGroup>
                 </AccordionDetails>
-            </Accordion>
+            </Accordion>) : ('')}
+           
+
+
             <Accordion>
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -204,9 +209,9 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={gender.female}
-                            onChange={handleGender}
-                            name="Female"
+                            checked={female}
+                            onChange={handleChange}
+                            name="female"
                             color="primary"
                         />
                         }
@@ -215,9 +220,9 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={gender.male}
-                            onChange={handleGender}
-                            name="Male"
+                            checked={male}
+                            onChange={handleChange}
+                            name="male"
                             color="primary"
                         />
                         }
@@ -226,11 +231,13 @@ const classes = useStyles();
                 </FormGroup>
                 </AccordionDetails>
             </Accordion>
+
+
             <Accordion>
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
+                aria-controls="panel4a-content"
+                id="panel4a-header"
                 >
                 <Typography className={classes.heading}>Size</Typography>
                 </AccordionSummary>
@@ -239,9 +246,9 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={size.small}
-                            onChange={handleSize}
-                            name="Small"
+                            checked={small}
+                            onChange={handleChange}
+                            name="small"
                             color="primary"
                         />
                         }
@@ -250,9 +257,9 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={size.medium}
-                            onChange={handleSize}
-                            name="Medium"
+                            checked={medium}
+                            onChange={handleChange}
+                            name="medium"
                             color="primary"
                         />
                         }
@@ -261,9 +268,9 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={size.large}
-                            onChange={handleSize}
-                            name="Large"
+                            checked={large}
+                            onChange={handleChange}
+                            name="large"
                             color="primary"
                         />
                         }
@@ -272,21 +279,19 @@ const classes = useStyles();
                     <FormControlLabel
                         control={
                         <Checkbox
-                            checked={size.xLarge}
-                            onChange={handleSize}
-                            name="XLarge"
+                            checked={xLarge}
+                            onChange={handleChange}
+                            name="xLarge"
                             color="primary"
                         />
                         }
                         label="XLarge"
                     />
-                    
-                    
-                    
-                
                 </FormGroup>
                 </AccordionDetails>
             </Accordion>
+
+
         </form>
     </div>
   );

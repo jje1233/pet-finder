@@ -18,6 +18,11 @@ function App() {
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
   
+  const [breeds, setBreeds] = useState(null)
+
+  
+
+  
 
       
     const params = new URLSearchParams();
@@ -45,7 +50,7 @@ function App() {
   return (
     
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds}}>
           
              <Grid container direction='column'>
              <Grid item>
