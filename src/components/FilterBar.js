@@ -13,6 +13,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Radio from '@material-ui/core/Radio'
 
 
+
+
+//Currently being worked on 
+
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
@@ -47,6 +51,29 @@ function FilterBar() {
         setSelectedBreed(event.target.value);
       };
 
+      const addFilters = async (e, pageNumber) => {
+          e.preventDefault()
+        const animal = document.querySelector('#pet').value
+          const zip = document.querySelector('#zip').value
+          const miles = document.querySelector('#miles').value
+        const breed = document.querySelector('#breed').value
+        const age = document.querySelector('#age').value
+        const gender = document.querySelector("#gender").value
+        const size = document.querySelector("#size").value
+        const data = await fetch (`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${pageNumber}&breed=${breed}&size=${size}$age=${age}&gender=${gender}`,{
+          headers: {
+              'Authorization': `Bearer ${petInfo.token}`,
+              'Content-Type': 'application/x-www-form-urlencoded'
+              }
+          })
+          .then(( data => data.json()))
+          petInfo.setFilteredBreeds(data)
+          
+          console.log(data)
+          petInfo.setPage(pageNumber)
+          petInfo.setLoaded(true)
+    }
+        
 
 
       
@@ -72,7 +99,7 @@ const classes = useStyles();
                 <Typography className={classes.heading}>Age</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <FormGroup row>
+                    <FormGroup row id='age' >
                         <FormControlLabel
                             control={
                             <Checkbox
@@ -133,7 +160,7 @@ const classes = useStyles();
                 </AccordionSummary>
                 <AccordionDetails>
                    
-                    <RadioGroup row style={{height: '600px', overflow: 'scroll'}} value={selectedBreed}>
+                    <RadioGroup row id='breed' style={{height: '600px', overflow: 'scroll'}} value={selectedBreed}>
                     
                         {petInfo.breeds.breeds.map(breed => {
                             return(
@@ -165,7 +192,7 @@ const classes = useStyles();
                 <Typography className={classes.heading}>Gender</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <FormGroup row>
+                <FormGroup row id='gender'>
                     <FormControlLabel
                         control={
                         <Checkbox
@@ -202,7 +229,7 @@ const classes = useStyles();
                 <Typography className={classes.heading}>Size</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <FormGroup row>
+                <FormGroup row id='size'>
                     <FormControlLabel
                         control={
                         <Checkbox
@@ -251,7 +278,7 @@ const classes = useStyles();
                 </AccordionDetails>
             </Accordion>
 
-
+            <button onClick={addFilters}>yo</button>
         </form>
     </div>
   );

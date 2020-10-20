@@ -41,9 +41,7 @@ function PetCards(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            <PetsIcon />
-          </Button>
+          
           <Button size="small" color="primary" href={props.url} target="_blank" rel="noopener" rel="noreferrer">
             Learn More
           </Button>

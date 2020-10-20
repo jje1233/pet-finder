@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import ImageSlider from './components/ImageSlider'
 import SearchResults from './pages/SearchResults'
+import Content from './components/content'
 import './App.css';
 import {TokenContext} from './components/context'
 
@@ -19,6 +20,7 @@ function App() {
   const [totalResults, setTotalResults] = useState(0)
   
   const [breeds, setBreeds] = useState(null)
+  const [filteredBreeds, setFilteredBreeds] = useState(null)
 
   
 
@@ -47,16 +49,20 @@ function App() {
       fetchToken()
     },[update])
 
-  return (
     
+      
+    
+
+  return (
+      
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreeds, setFilteredBreeds}}>
           
              <Grid container direction='column'>
              <Grid item>
                <Header />
              </Grid>
-             <Grid item container>
+             <Grid item container style={{marginTop: '64px'}}>
                <Grid item xs={false} sm={2} />
                <Grid item xs={12} sm={8} >
                  <ImageSlider />
@@ -71,20 +77,16 @@ function App() {
                </Grid>
                <Grid item xs={false} sm={2} />
              </Grid>
+
+
              <Grid item container>
                <Grid item xs={false} sm={2} />
                <Grid item xs={12} sm={8}>
-                
+                <Content />
                </Grid>
                <Grid item xs={false} sm={2} />
              </Grid>
-             <Grid item container>
-              
-               <Grid item xs={11} >
-                <SearchResults />
-               </Grid>
-               
-             </Grid>
+        
              <Grid item xs={12}>
                  <Footer />
              </Grid>

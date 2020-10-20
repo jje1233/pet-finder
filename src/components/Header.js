@@ -15,6 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import PetsIcon from '@material-ui/icons/Pets';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    
+
   },
   search: {
     position: 'relative',
@@ -79,13 +78,13 @@ const useStyles = makeStyles((theme) => ({
 const drawerItems = [
   {
     id: 1,
-    icon: <HomeIcon />,
+    icon: <HomeIcon href="#"/>,
     name: 'Home'
   },
   {
     id: 2,
     icon: <PetsIcon />,
-    name: 'Pets'
+    name: 'Pets (Coming Soon)'
   },
 
 ]
@@ -95,12 +94,12 @@ function Header() {
   const [open, setOpen] = useState(false)
 
   const handleDrawer = () => {
-    setOpen(true)
+    setOpen(true) 
   }
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor: '#17252A', color: '#3AAFA9'}}>
+      <AppBar position="fixed" style={{backgroundColor: '#17252A', color: '#3AAFA9', top: 0}}>
         
         <Toolbar>
           <IconButton onClick={handleDrawer}
@@ -111,22 +110,13 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h4" noWrap>
+          <Link href='/' color="inherit">
+          <Typography className={classes.title} variant="h4" noWrap >
             Furever Friend Finder
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+          </Link>
+          
+          
         </Toolbar>
       </AppBar>
 
@@ -137,10 +127,13 @@ function Header() {
       >
       <List className={classes.list}>
         {drawerItems.map((item, index) => (
-          <ListItem button key={index}>
+          <Link href="/">
+          <ListItem button key={index} a>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
+        </Link>
+          
         ))}
       </List>
       <Divider />

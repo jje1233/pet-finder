@@ -16,7 +16,9 @@ import {Grid} from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      
+      [theme.breakpoints.down('sm')]: {
+        flexDirection:'column',
+      },
     },
     appbar: {
         backgroundColor: '#17252A'

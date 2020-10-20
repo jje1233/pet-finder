@@ -3,6 +3,7 @@ import PetCards from './PetCards'
 import {Grid} from '@material-ui/core'
 import {TokenContext} from './context'
 import Pagination from 'react-js-pagination'
+import SearchBar from './SearchBar'
 
 
 function Content() {
@@ -23,6 +24,7 @@ function Content() {
         console.log(data)
         petInfo.setPage(pageNumber)
         petInfo.setLoaded(true)
+        window.scrollTo(0,200)
   }
  
 
@@ -58,13 +60,15 @@ function Content() {
                     totalItemsCount={petInfo.totalResults}
                     pageRangeDisplayed={5}
                     onChange={handleChange}
+                    
+                    
                 />
              </Grid>
             
             
             
         </Grid>
-        ) : (<h1>Results will be displayed here once you start a search!</h1>)
+        ) : ('')
       
     )
 }

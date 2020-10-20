@@ -7,6 +7,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
 import {TokenContext} from './context'
+import {isValidZip} from './ValidateZip'
 
 
   
@@ -60,8 +61,13 @@ const mileHandler = (event) => {
 const  submitWrapperFunction = async (event) => {
   event.preventDefault()
   const handleSubmit = async () => {
-    const animal = document.querySelector('#pet').value
     const zip = document.querySelector('#zip').value
+    if(!isValidZip(zip)){
+      alert('Invalid zip code')
+      return;
+    }
+    const animal = document.querySelector('#pet').value
+    
     const miles = document.querySelector('#miles').value
     const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
