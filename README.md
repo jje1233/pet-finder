@@ -8,7 +8,8 @@ The project will feature:
 
 3rd party dependencies will include:
 
-- Axios (Requests to database)
+- React-Image-Carousel
+- React-pagination
 - Material UI
 
 Live version available at: www.fureverfriendfinder.xyz
