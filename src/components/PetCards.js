@@ -11,11 +11,8 @@ import TokenContext from './context'
 import PetsIcon from '@material-ui/icons/Pets';
 
 const useStyles = makeStyles({
-  root: {
-    
-  },
   media: {
-    height: 260,
+    height: 360,
   },
 });
 function PetCards(props) {
@@ -24,7 +21,7 @@ function PetCards(props) {
   let {loaded} = useContext(TokenContext)
   
     return (
-      loaded ? (<Card className={classes.root}>
+      loaded ? (<Card >
         <CardActionArea href={props.url} target="_blank" rel="noopener" rel="noreferrer">
           <CardMedia
             className={classes.media}
@@ -46,7 +43,7 @@ function PetCards(props) {
             Learn More
           </Button>
         </CardActions>
-      </Card>) : (<p>hi</p>) 
+      </Card>) : (<p> </p>) 
       
     );
   }

@@ -80,11 +80,11 @@ function App() {
 
 
              <Grid item container>
-               <Grid item xs={false} sm={2} />
-               <Grid item xs={12} sm={8}>
+               <Grid item xs={1} md={2} />
+               <Grid item xs={10} md={8}>
                 <Content />
                </Grid>
-               <Grid item xs={false} sm={2} />
+               <Grid item xs={1} md={2} />
              </Grid>
         
              <Grid item xs={12}>

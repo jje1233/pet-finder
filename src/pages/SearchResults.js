@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import {Grid} from '@material-ui/core'
 import FilterBar from '../components/FilterBar'
 import TokenContext from '../components/context'
@@ -65,7 +65,7 @@ function SearchResults(props) {
                         </Grid>
   
                     </Grid>
-                        ) : (<h1>We are all the cards</h1>)}
+                        ) : (<h1> </h1>)}
                 </Grid>
 
 
