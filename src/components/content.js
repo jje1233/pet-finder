@@ -36,7 +36,7 @@ function Content() {
             <Grid container spacing={2}>
             
              {petInfo.pets.animals.map(pet =>{
-                 return <Grid item xs={12} sm={4} key={pet.id}>
+                 return <Grid item xs={12} sm={3} key={pet.id}>
                             <PetCards 
                                 name={pet.name}
                                 breed={pet.breeds.primary}
