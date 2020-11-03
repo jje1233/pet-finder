@@ -11,14 +11,12 @@ import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Grid} from '@material-ui/core'
+import {useMediaQuery} from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      [theme.breakpoints.down('sm')]: {
-        flexDirection:'column',
-      },
     },
     appbar: {
         backgroundColor: '#17252A'
@@ -31,16 +29,24 @@ const useStyles = makeStyles((theme) => ({
      color: '#3AAFA9'
     },
     textArea: {
-        margin: theme.spacing(1),
-        width: '25ch',
-        color: 'black'
+        
+        width: '24ch',
+        padding: '16px',
+        borderTopLeftRadius: '5px',
+        borderBottomLeftRadius: '5px',
     },
     listSubheader: {
         fontSize: '16px',
         color: '#DEF2F1'
     },
     btn: {
-        padding: '14px',
+        padding: '18px',
+        outline: 'none',
+        border: 'none',
+        borderTopRightRadius: '5px',
+        borderBottomRightRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#3AAFA9'
         
     },
   }));
@@ -49,25 +55,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Footer() {
     const classes = useStyles();
-  
+    const isMobile = useMediaQuery('(max-width: 900px)')
     return (
       <div className={classes.root}>
-        <Grid container>
+        <Grid container >
         <AppBar position="static" className={classes.appbar}>
-            <Toolbar>
-                <Grid item xs={3}>
-                    <List className={classes.list}>
-                    <Typography variant="h4" className={classes.title}>
-                    Never miss a new pet
-                    </Typography>
-                    <Grid item>
-                    <TextField  id="filled-basic" label="E-Mail" variant="filled"></TextField><Button variant='outlined' size='large' className={classes.btn}>Submit</Button>
-                    </Grid>
-                    
-                    </List>
-                </Grid>
+            <Toolbar style={isMobile ? {flexDirection: 'column', justifyContent: 'left'} : {flexDirection: 'row'}}>
                 
-                <Grid item xs={3}>
+                
+                <Grid item xs={12} md={3}>
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>ABOUT</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Our Mission</ListItemText>
@@ -84,7 +80,7 @@ function Footer() {
                     </List>
                 </Grid>
                 
-                <Grid item xs={3} >
+                <Grid item xs={12} md={3}>
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>PET ADOPTION</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Dog Adoption</ListItemText>
@@ -98,7 +94,7 @@ function Footer() {
                     </List>
                 </Grid>
                 
-                <Grid item xs={3}>
+                <Grid item xs={12} md={3}>
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>PET CARE TOPICS</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Dog Care</ListItemText>
@@ -115,6 +111,17 @@ function Footer() {
                     <ListItem button component='a'>
                         <ListItemText>Pet Care Videos</ListItemText>
                     </ListItem>
+                    </List>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                    <List className={classes.list}>
+                    <Typography variant="h4" className={classes.title}>
+                    Never miss a new pet
+                    </Typography>
+                    <Grid item >
+                    <input type='text' id="newsletter" label="E-Mail" className={classes.textArea}></input><button variant='outlined' size='large' className={classes.btn}>Submit</button>
+                    </Grid>
+                    
                     </List>
                 </Grid>
             </Toolbar>   

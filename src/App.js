@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 // import Content from './components/content'
 import SearchBar from './components/SearchBar'
-import ImageSlider from './components/ImageSlider'
+import Hero from './components/Hero'
 import SearchResults from './pages/SearchResults'
 import Content from './components/content'
 import './App.css';
@@ -59,35 +59,17 @@ function App() {
         <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreeds, setFilteredBreeds}}>
           
              <Grid container direction='column'>
-             <Grid item>
+             <Grid item >
                <Header />
              </Grid>
-             <Grid item container style={{marginTop: '64px'}}>
-               <Grid item xs={false} sm={2} />
-               <Grid item xs={12} sm={8} >
-                 <ImageSlider />
-               </Grid>
-               <Grid item xs={false} sm={2} />
-             </Grid>
-             
-             <Grid item container>
-               <Grid item xs={false} sm={2} />
-               <Grid item xs={11} sm={8} >
-                   <SearchBar />
-               </Grid>
-               <Grid item xs={false} sm={2} />
-             </Grid>
-
 
              <Grid item container>
-               <Grid item xs={1} md={2} />
-               <Grid item xs={10} md={8}>
-                <Content />
+               <Grid item xs={12} >
+                 <Hero />
                </Grid>
-               <Grid item xs={1} md={2} />
              </Grid>
-        
-             <Grid item xs={12}>
+
+             <Grid item>
                  <Footer />
              </Grid>
            </Grid>

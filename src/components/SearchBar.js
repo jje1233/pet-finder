@@ -10,29 +10,36 @@ import {TokenContext} from './context'
 import {isValidZip} from './ValidateZip'
 
 
+
   
 const useStyles = makeStyles((theme) => ({
 root: {
     '& > *': {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    position: 'sticky',
-    bottom: 0,
-    left: 0,
+    
+    backgroundColor: 'white',
+    borderRadius: '8px'
+    
+    
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
       },
     sel: {
-        paddingBottom: '16px'
+        paddingBottom: '16px',
+        
     },
     inpLbl:{
         paddingBottom: '16px'
-    }
+    },
+    
+
 },
 }));
 
 function SearchBar() {
+ 
 
 const petInfo = useContext(TokenContext)
 const classes = useStyles();
@@ -100,15 +107,14 @@ const  submitWrapperFunction = async (event) => {
   
 
 return (
-   
-        <form className={classes.root} noValidate id='pet-search' autoComplete="off">
-        <Grid container spacing={2}>
-            <Grid item xs={6} sm={7}>
-                <TextField fullWidth  id='zip' label="Enter a Zip Code" variant="filled" />
+        <form className={classes.root} noValidate id='pet-search' autoComplete="off" >
+          <Grid container spacing={2} direction='row'>
+            <Grid item xs={6} >
+                <TextField fullWidth  id='zip' label="Zip Code"/>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} >
                 <InputLabel className={classes.inpLbl} htmlFor="pet">Pet</InputLabel>
-                <NativeSelect fullWidth  className={classes.sel} 
+                <NativeSelect fullWidth  className={classes.sel}
                 value={petName.name}
                 onChange={petHandler}
                 inputProps={{
@@ -121,7 +127,7 @@ return (
                 <option value={'cat'}>Cat</option>
                 </NativeSelect>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} >
             <InputLabel className={classes.inpLbl} htmlFor="pet">Miles</InputLabel>
                 <NativeSelect fullWidth  className={classes.sel} 
                 value={miles.miles}
@@ -140,10 +146,10 @@ return (
                 <option value={60}>60</option>
                 </NativeSelect>
             </Grid>
-            <Grid item xs={1}>
-            <Button variant="contained" color="primary" type="submit" size='large' onClick={submitWrapperFunction}>
-                 <SearchIcon />
-            </Button>
+            <Grid item xs={2} >
+            <button type="submit" className='search-btn' onClick={submitWrapperFunction}>
+              <i className="fas fa-search"></i>
+            </button>
             </Grid>
         </Grid>
         </form>

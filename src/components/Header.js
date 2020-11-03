@@ -16,6 +16,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import PetsIcon from '@material-ui/icons/Pets';
 import Link from '@material-ui/core/Link';
+import {useMediaQuery} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,48 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    
+  },
 
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
   list: {
     width: 250,
   },
@@ -96,7 +57,7 @@ function Header() {
   const handleDrawer = () => {
     setOpen(true) 
   }
-
+  const isMobile = useMediaQuery('(max-width: 900px)')
   return (
     <div className={classes.root}>
       <AppBar position="fixed" style={{backgroundColor: '#17252A', color: '#3AAFA9', top: 0}}>
@@ -111,7 +72,7 @@ function Header() {
             <MenuIcon />
           </IconButton>
           <Link href='/' color="inherit">
-          <Typography className={classes.title} variant="h4" noWrap >
+          <Typography className={classes.title} variant={isMobile ? 'h5' : 'h4'} noWrap >
             Furever Friend Finder
           </Typography>
           </Link>
