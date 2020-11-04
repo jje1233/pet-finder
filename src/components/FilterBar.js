@@ -278,7 +278,7 @@ const classes = useStyles();
                 </AccordionDetails>
             </Accordion>
 
-            <button onClick={addFilters}>yo</button>
+            <button style={{width: '100%', height: '60px', backgroundColor: '#17252A', color: '#3AAFA9', fontSize: '20px', outline: 'none', border: 'none', borderRadius: '8px', cursor: 'pointer'}}onClick={addFilters}>APPLY FILTERS</button>
         </form>
     </div>
   );

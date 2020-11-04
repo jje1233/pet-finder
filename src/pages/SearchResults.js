@@ -26,12 +26,13 @@ function SearchResults(props) {
         petInfo.setLoaded(true)
   }
     return(
-        <Grid container spacing={2}>
+        <Grid container spacing={2} style={{marginTop: '60px'}}>
                 <Grid item xs={false} sm={1} />
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={2}>
                     <FilterBar /> 
                 </Grid>
                 <Grid item container xs={12} sm={8}>  
+                <Grid item xs={false} sm={1}/>
                 {petInfo.loaded ? (
                     <Grid container spacing={2}>
                     
@@ -64,7 +65,7 @@ function SearchResults(props) {
                         </Grid>
   
                     </Grid>
-                        ) : (<h1> </h1>)}
+                        ) : (<div className="loader">Loading...</div>)}
                 </Grid>
 
 
