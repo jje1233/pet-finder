@@ -81,6 +81,8 @@ const  submitWrapperFunction = async (event) => {
     
     const miles = document.querySelector('#miles').value
     petInfo.setMiles(miles)
+    petInfo.setUrl(`https://api.petfinder.com/v2/types/${animal}/breeds`)
+    console.log(petInfo.url)
     const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
@@ -96,7 +98,8 @@ const  submitWrapperFunction = async (event) => {
   }
   const handleBreeds = async () => {
     const animal = document.querySelector('#pet').value
-    petInfo.setUrl(`https://api.petfinder.com/v2/types/${animal}/breeds`)
+    
+    
     const data = await fetch(`https://api.petfinder.com/v2/types/${animal}/breeds`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,

@@ -16,6 +16,14 @@ html, body{
   background-size: cover;
   position: relative;
 }
+@keyframes fadeInAnimation { 
+  0% { 
+      opacity: 0; 
+  } 
+  100% { 
+      opacity: 1; 
+   } 
+} 
 .hero-text {
   text-align: center;
   position: absolute;
@@ -25,7 +33,13 @@ html, body{
   color: white;
   font-family: 'Open Sans', serif;
   text-shadow: 2px 2px black ;
+  animation: fadeInAnimation ease 3s; 
+  animation-iteration-count: 1; 
+  animation-fill-mode: forwards; 
 }
+
+
+
 .hero-search{
   
   text-align: center;
@@ -34,7 +48,9 @@ html, body{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
-  
+  animation: fadeInAnimation ease 3s; 
+  animation-iteration-count: 1; 
+  animation-fill-mode: forwards; 
 }
 .search-btn {
   outline: none;
@@ -90,6 +106,13 @@ ul.pagination li a.active {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .hero-search{
+    bottom: 10%;
+    width: 90%;
+  }
 }
 
 .loader,
