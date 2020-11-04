@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
 import {TokenContext} from './context'
 import {isValidZip} from './ValidateZip'
+import {Link} from 'react-router-dom'
+import SearchResults from '../pages/SearchResults';
 
 
 
@@ -69,13 +71,16 @@ const  submitWrapperFunction = async (event) => {
   event.preventDefault()
   const handleSubmit = async () => {
     const zip = document.querySelector('#zip').value
+    petInfo.setZip(zip)
     if(!isValidZip(zip)){
       alert('Invalid zip code')
       return;
     }
     const animal = document.querySelector('#pet').value
+    petInfo.setAnimal(animal)
     
     const miles = document.querySelector('#miles').value
+    petInfo.setMiles(miles)
     const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
@@ -91,6 +96,7 @@ const  submitWrapperFunction = async (event) => {
   }
   const handleBreeds = async () => {
     const animal = document.querySelector('#pet').value
+    petInfo.setUrl(`https://api.petfinder.com/v2/types/${animal}/breeds`)
     const data = await fetch(`https://api.petfinder.com/v2/types/${animal}/breeds`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
@@ -147,9 +153,14 @@ return (
                 </NativeSelect>
             </Grid>
             <Grid item xs={2} >
-            <button type="submit" className='search-btn' onClick={submitWrapperFunction}>
-              <i className="fas fa-search"></i>
-            </button>
+              
+                <button type="submit" className='search-btn' onClick={submitWrapperFunction}>
+                <Link to='/searchresults'>
+                  <i className="fas fa-search"></i>
+                  </Link>
+                </button>
+              
+            
             </Grid>
         </Grid>
         </form>

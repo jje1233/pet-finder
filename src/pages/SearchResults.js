@@ -4,16 +4,15 @@ import FilterBar from '../components/FilterBar'
 import TokenContext from '../components/context'
 import PetCards from '../components/PetCards'
 import Pagination from 'react-js-pagination'
+import SearchBar from '../components/SearchBar'
 
 
 
 function SearchResults(props) {
     const petInfo = useContext(TokenContext)
     const handleChange = async (pageNumber) => {
-        const animal = document.querySelector('#pet').value
-        const zip = document.querySelector('#zip').value
-        const miles = document.querySelector('#miles').value
-        const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${pageNumber}`, {
+        
+        const data = await fetch(`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&page=${pageNumber}`, {
         headers: {
             'Authorization': `Bearer ${petInfo.token}`,
             'Content-Type': 'application/x-www-form-urlencoded'

@@ -7,6 +7,7 @@ import SearchBar from './components/SearchBar'
 import Hero from './components/Hero'
 import SearchResults from './pages/SearchResults'
 import Content from './components/content'
+import {Switch, Route} from 'react-router-dom'
 import './App.css';
 import {TokenContext} from './components/context'
 
@@ -18,9 +19,12 @@ function App() {
   const [loaded, setLoaded] = useState(false)
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
-  
   const [breeds, setBreeds] = useState(null)
   const [filteredBreeds, setFilteredBreeds] = useState(null)
+  const [url, setUrl] = useState(``)
+  const [animal, setAnimal] = useState('')
+  const [zip, setZip] = useState('')
+  const [miles, setMiles] = useState('')
 
   
 
@@ -55,29 +59,33 @@ function App() {
 
   return (
       
+
+      
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreeds, setFilteredBreeds}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreeds, setFilteredBreeds, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal}}>
           
-             <Grid container direction='column'>
-             <Grid item >
-               <Header />
-             </Grid>
+             
+             
+            <Header />
+             <Switch>
+             <Route path='/' exact component={Hero}/>
+            
+            
+             
+            <Route path='/searchresults'  component={SearchResults} />
+             </Switch>
+            
 
-             <Grid item container>
-               <Grid item xs={12} >
-                 <Hero />
-               </Grid>
-             </Grid>
-
-             <Grid item>
+             
                  <Footer />
-             </Grid>
-           </Grid>
+             
+           
           
         </TokenContext.Provider>
       
       
     </div>
+    
     
     
   );
