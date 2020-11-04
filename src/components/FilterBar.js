@@ -53,14 +53,15 @@ function FilterBar() {
 
       const addFilters = async (e, pageNumber) => {
           e.preventDefault()
-        const animal = document.querySelector('#pet').value
-          const zip = document.querySelector('#zip').value
-          const miles = document.querySelector('#miles').value
+
+         
+
+        
         const breed = document.querySelector('#breed').value
         const age = document.querySelector('#age').value
         const gender = document.querySelector("#gender").value
         const size = document.querySelector("#size").value
-        const data = await fetch (`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${pageNumber}&breed=${breed}&size=${size}$age=${age}&gender=${gender}`,{
+        const data = await fetch (`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&page=${petInfo.pageNumber}&breed=${breed}&size=${size}$age=${age}&gender=${gender}`,{
           headers: {
               'Authorization': `Bearer ${petInfo.token}`,
               'Content-Type': 'application/x-www-form-urlencoded'

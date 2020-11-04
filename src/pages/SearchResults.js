@@ -25,6 +25,7 @@ function SearchResults(props) {
         petInfo.setPage(pageNumber)
         petInfo.setLoaded(true)
   }
+  
     return(
         <Grid container spacing={2} style={{marginTop: '60px'}}>
                 <Grid item xs={false} sm={1} />
