@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
      color: '#3AAFA9'
     },
     textArea: {
-        
+        outline:'none',
+        border: 'none',
         width: '24ch',
         padding: '16px',
         borderTopLeftRadius: '5px',
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#DEF2F1'
     },
     btn: {
-        padding: '18px',
+        padding: '16px',
         outline: 'none',
         border: 'none',
         borderTopRightRadius: '5px',
@@ -119,7 +120,7 @@ function Footer() {
                     Never miss a new pet
                     </Typography>
                     <Grid item >
-                    <input type='text' id="newsletter" label="E-Mail" className={classes.textArea}></input><button variant='outlined' size='large' className={classes.btn}>Submit</button>
+                    <input  id="newsletter" label="E-Mail" name="E-mail" placeholder='E-Mail Address' type='email' className={classes.textArea}></input><button className={classes.btn}>Submit</button>
                     </Grid>
                     
                     </List>
