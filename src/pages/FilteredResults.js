@@ -8,11 +8,11 @@ import SearchBar from '../components/SearchBar'
 
 
 
-function SearchResults(props) {
+function FilteredResults(props) {
     const petInfo = useContext(TokenContext)
     const handleChange = async (pageNumber) => {
         
-        const data = await fetch(`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&page=${pageNumber}`, {
+        const data = await fetch(`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&breed=${petInfo.selectedBreed}&page=${pageNumber}`, {
         headers: {
             'Authorization': `Bearer ${petInfo.token}`,
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -22,7 +22,7 @@ function SearchResults(props) {
         petInfo.setPets(data)
         
         console.log(data)
-        petInfo.setPage(pageNumber)
+        petInfo.setFilteredPage(pageNumber)
         petInfo.setLoaded(true)
         window.scroll(0,0)
   }
@@ -35,10 +35,10 @@ function SearchResults(props) {
                 </Grid>
                 <Grid item container xs={12} sm={8}>  
                 <Grid item xs={false} sm={1}/>
-                {petInfo.loaded ? (
+                {petInfo.loaded && petInfo.filteredBreed? (
                     <Grid container spacing={2}>
                     
-                        {petInfo.pets.animals.map(pet =>{
+                        {petInfo.filteredBreed.animals.map(pet =>{
                             return <Grid item xs={12} sm={3} key={pet.id}>
                                         <PetCards 
                                             name={pet.name}
@@ -55,9 +55,9 @@ function SearchResults(props) {
                         })
             
                         }
-                        <Grid item xs={12}>
+                      <Grid item xs={12}>
                             <Pagination 
-                                activePage={petInfo.page}
+                                activePage={petInfo.filteredPage}
                                 
                                 itemsCountPerPage={petInfo.totalResults / 20}
                                 totalItemsCount={petInfo.totalResults}
@@ -68,7 +68,6 @@ function SearchResults(props) {
   
                     </Grid>
                         ) : (<div className="loader">Loading...</div>)}
-
                     
                 </Grid>
 
@@ -77,4 +76,19 @@ function SearchResults(props) {
     )
 }
 
-export default SearchResults
+export default FilteredResults
+
+
+/* 
+<Grid item xs={12}>
+                            <Pagination 
+                                activePage={petInfo.page}
+                                
+                                itemsCountPerPage={petInfo.totalResults / 20}
+                                totalItemsCount={petInfo.totalResults}
+                                pageRangeDisplayed={5}
+                                onChange={handleChange}
+                            />
+                        </Grid> 
+
+                        */

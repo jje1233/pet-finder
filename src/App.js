@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import Hero from './components/Hero'
 import SearchResults from './pages/SearchResults'
+import FilteredResults from './pages/FilteredResults'
 import Content from './components/content'
 import {Switch, Route} from 'react-router-dom'
 import './App.css';
@@ -25,7 +26,9 @@ function App() {
   const [animal, setAnimal] = useState('')
   const [zip, setZip] = useState('')
   const [miles, setMiles] = useState('')
-
+  const [selectedBreed, setSelectedBreed] = useState(null)
+  const [filteredBreed, setFilteredBreed] = useState(null)
+  const [filteredPage, setFilteredPage] = useState(1)
   
 
   
@@ -62,7 +65,7 @@ function App() {
 
       
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreeds, setFilteredBreeds, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal}}>
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreed, setFilteredBreed, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal, selectedBreed, setSelectedBreed, filteredPage, setFilteredPage}}>
           
              
              
@@ -73,6 +76,7 @@ function App() {
             
              
             <Route path='/searchresults'  component={SearchResults} />
+            <Route path='/filteredresults' component={FilteredResults} />
              </Switch>
             
 

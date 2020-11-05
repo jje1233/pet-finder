@@ -11,6 +11,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Radio from '@material-ui/core/Radio'
+import {Link} from 'react-router-dom'
 
 
 
@@ -46,44 +47,32 @@ function FilterBar() {
         xLarge: false,
 
       });
-      const [selectedBreed, setSelectedBreed] = useState('')
-      const handleBreed = (event) => {
-        setSelectedBreed(event.target.value);
-      };
+      
+      
 
-      const addFilters = async (e, pageNumber) => {
+      const addFilters = async (e) => {
           e.preventDefault()
 
-         
-
-        
         const breed = document.querySelector('#breed').value
-        const age = document.querySelector('#age').value
-        const gender = document.querySelector("#gender").value
-        const size = document.querySelector("#size").value
-        const data = await fetch (`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&page=${petInfo.pageNumber}&breed=${breed}&size=${size}$age=${age}&gender=${gender}`,{
+        
+        const data = await fetch (`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&breed=${petInfo.selectedBreed}`,{
           headers: {
               'Authorization': `Bearer ${petInfo.token}`,
               'Content-Type': 'application/x-www-form-urlencoded'
               }
           })
           .then(( data => data.json()))
-          petInfo.setFilteredBreeds(data)
-          
-          console.log(data)
-          petInfo.setPage(pageNumber)
+          petInfo.setFilteredBreed(data)
           petInfo.setLoaded(true)
+          console.log(data)
     }
         
 
-
       
-
-      const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-      }
-
-      const { baby, young, adult, senior, female, male, small, medium, large, xLarge, breed} = state;
+      const handleBreed = (event) => {
+        petInfo.setSelectedBreed(event.target.value);
+      };
+      
     
 
 const classes = useStyles();
@@ -91,66 +80,8 @@ const classes = useStyles();
   return (
     <div className={classes.root}>
         <form>
-            <Accordion>
-                <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                >
-                <Typography className={classes.heading}>Age</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <FormGroup row id='age' >
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={baby}
-                                onChange={handleChange}
-                                name="baby"
-                                color="primary"
-                            />
-                            }
-                            label="Baby"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={young}
-                                onChange={handleChange}
-                                name="young"
-                                color="primary"
-                            />
-                            }
-                            label="Young"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={adult}
-                                onChange={handleChange}
-                                name="adult"
-                                color="primary"
-                            />
-                            }
-                            label="Adult"
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                checked={senior}
-                                onChange={handleChange}
-                                name="senior"
-                                color="primary"
-                            />
-                            }
-                            label="Senior"
-                        />
-                    </FormGroup>
-                </AccordionDetails>
-            </Accordion>
-
             {petInfo.loaded ? ( 
-            
+            <>
             <Accordion>
                 <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -161,7 +92,7 @@ const classes = useStyles();
                 </AccordionSummary>
                 <AccordionDetails>
                    
-                    <RadioGroup row id='breed' style={{height: '600px', overflow: 'scroll'}} value={selectedBreed}>
+                    <RadioGroup row id='breed' style={{height: '600px', overflow: 'scroll'}} value={petInfo.selectedBreed}>
                     
                         {petInfo.breeds.breeds.map(breed => {
                             return(
@@ -180,106 +111,11 @@ const classes = useStyles();
                         })}
                     </RadioGroup>
                 </AccordionDetails>
-            </Accordion>) : ('')}
+                    
+            </Accordion> <button style={{width: '100%', height: '60px', backgroundColor: '#17252A', color: '#3AAFA9', fontSize: '20px', outline: 'none', border: 'none', borderRadius: '8px', cursor: 'pointer'}}onClick={addFilters}><Link to='/filteredresults'>APPLY FILTERS</Link></button></>) : ('')}
            
 
-
-            <Accordion>
-                <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-                >
-                <Typography className={classes.heading}>Gender</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <FormGroup row id='gender'>
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={female}
-                            onChange={handleChange}
-                            name="female"
-                            color="primary"
-                        />
-                        }
-                        label="Female"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={male}
-                            onChange={handleChange}
-                            name="male"
-                            color="primary"
-                        />
-                        }
-                        label="Male"
-                    />
-                </FormGroup>
-                </AccordionDetails>
-            </Accordion>
-
-
-            <Accordion>
-                <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel4a-content"
-                id="panel4a-header"
-                >
-                <Typography className={classes.heading}>Size</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <FormGroup row id='size'>
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={small}
-                            onChange={handleChange}
-                            name="small"
-                            color="primary"
-                        />
-                        }
-                        label="Small"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={medium}
-                            onChange={handleChange}
-                            name="medium"
-                            color="primary"
-                        />
-                        }
-                        label="Medium"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={large}
-                            onChange={handleChange}
-                            name="large"
-                            color="primary"
-                        />
-                        }
-                        label="Large"
-                    />
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={xLarge}
-                            onChange={handleChange}
-                            name="xLarge"
-                            color="primary"
-                        />
-                        }
-                        label="XLarge"
-                    />
-                </FormGroup>
-                </AccordionDetails>
-            </Accordion>
-
-            <button style={{width: '100%', height: '60px', backgroundColor: '#17252A', color: '#3AAFA9', fontSize: '20px', outline: 'none', border: 'none', borderRadius: '8px', cursor: 'pointer'}}onClick={addFilters}>APPLY FILTERS</button>
+            
         </form>
     </div>
   );
