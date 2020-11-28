@@ -108,6 +108,9 @@ ul.pagination li a.active {
 }
 
 @media (max-width: 900px) {
+  .hero-text{
+    margin-top: 40px;
+  }
   .hero-search{
     bottom: 10%;
     width: 90%;
