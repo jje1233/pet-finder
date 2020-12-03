@@ -61,33 +61,16 @@ function App() {
     
 
   return (
-      
-
-      
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreed, setFilteredBreed, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal, selectedBreed, setSelectedBreed, filteredPage, setFilteredPage}}>
-          
-             
-             
+        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreed, setFilteredBreed, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal, selectedBreed, setSelectedBreed, filteredPage, setFilteredPage}}>    
             <Header />
              <Switch>
-             <Route path='/' exact component={Hero}/>
-            
-            
-             
-            <Route path='/searchresults'  component={SearchResults} />
-            <Route path='/filteredresults' component={FilteredResults} />
+              <Route path='/' exact component={Hero}/>
+              <Route path='/searchresults'  component={SearchResults} />
+              <Route path='/filteredresults' component={FilteredResults} />
              </Switch>
-            
-
-             
-                 <Footer />
-             
-           
-          
+            <Footer />
         </TokenContext.Provider>
-      
-      
     </div>
     
     
