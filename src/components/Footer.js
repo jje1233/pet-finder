@@ -78,6 +78,9 @@ function Footer() {
                     <ListItem button component='a'>
                         <ListItemText>Contact Us</ListItemText>
                     </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
                     </List>
                 </Grid>
                 
@@ -92,6 +95,12 @@ function Footer() {
                     <ListItem button component='a'>
                         <ListItemText>Search Shelters</ListItemText>
                     </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
                     </List>
                 </Grid>
                 

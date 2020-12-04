@@ -29,50 +29,46 @@ function SearchResults(props) {
   
     return(
         <Grid container spacing={2} style={{marginTop: '60px'}}>
-                <Grid item xs={false} sm={1} />
-                <Grid item xs={12} sm={2}>
+            <Grid item xs={false} sm={1} />
+            <Grid item xs={12} sm={2}>
                     <FilterBar /> 
-                </Grid>
-                <Grid item container xs={12} sm={8}>  
+            </Grid>
+            <Grid item container xs={12} sm={8}>  
                 <Grid item xs={false} sm={1}/>
-                {petInfo.loaded ? (
-                    <Grid container spacing={2}>
-                    
-                        {petInfo.pets.animals.map(pet =>{
-                            return <Grid item xs={12} sm={3} key={pet.id}>
-                                        <PetCards 
-                                            name={pet.name}
-                                            breed={pet.breeds.primary}
-                                            gender={pet.gender}
-                                            size={pet.size}
-                                            desc={pet.description}
-                                            url={pet.url}
-                                            img={pet.photos[0]?.large}
-                                            
-                                            
-                                        />
-                                    </Grid> 
-                        })
-            
-                        }
-                        <Grid item xs={12}>
-                            <Pagination 
-                                activePage={petInfo.page}
-                                
-                                itemsCountPerPage={petInfo.totalResults / 20}
-                                totalItemsCount={petInfo.totalResults}
-                                pageRangeDisplayed={5}
-                                onChange={handleChange}
-                            />
-                        </Grid>
-  
+                    {petInfo.loaded ? (
+                        <Grid container spacing={2}>
+                            {petInfo.pets.animals.map(pet =>{
+                                return <Grid item xs={12} sm={3} key={pet.id}>
+                                            <PetCards 
+                                                name={pet.name}
+                                                breed={pet.breeds.primary}
+                                                gender={pet.gender}
+                                                size={pet.size}
+                                                desc={pet.description}
+                                                url={pet.url}
+                                                img={pet.photos[0]?.large}
+                                                
+                                                
+                                            />
+                                        </Grid> 
+                            })
+                
+                    }
+                    <Grid item xs={12}>
+                        <Pagination 
+                            activePage={petInfo.page}
+                            itemsCountPerPage={petInfo.totalResults / 20}
+                            totalItemsCount={petInfo.totalResults}
+                            pageRangeDisplayed={5}
+                            onChange={handleChange}
+                                />
                     </Grid>
-                        ) : (<div className="loader">Loading...</div>)}
-
-                    
+    
                 </Grid>
+                            ) : (<div className="loader">Loading...</div>)}
 
-
+                        
+            </Grid>
         </Grid>
     )
 }
