@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TokenContext from './context'
 import PetsIcon from '@material-ui/icons/Pets';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
   media: {
@@ -18,16 +19,19 @@ const useStyles = makeStyles({
 function PetCards(props) {
   
   const classes = useStyles();
-  let {loaded} = useContext(TokenContext)
+  let petInfo = useContext(TokenContext)
   
     return (
-      loaded ? (<Card >
-        <CardActionArea href={props.url} target="_blank" rel="noopener" rel="noreferrer">
+      petInfo.loaded ? (<Card >
+        <CardActionArea href={props.url} target="_blank" rel="noopener" rel="noreferrer" onClick={() => petInfo.setName(props.name), petInfo.setImage(props.img)}>
+          <Link to='/petdetails'>
           <CardMedia
             className={classes.media}
             image={props.img}
             title={props.name}
           />
+          </Link>
+          
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {props.name}

@@ -71,7 +71,7 @@ function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Link href='/' color="inherit">
+          <Link href='/' color="inherit" style={{textDecoration: 'none'}}>
           <Typography className={classes.title} variant={isMobile ? 'h5' : 'h4'} noWrap >
             Furever Friend Finder
           </Typography>

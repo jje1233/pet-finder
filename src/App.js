@@ -11,6 +11,7 @@ import Content from './components/content'
 import {Switch, Route} from 'react-router-dom'
 import './App.css';
 import {TokenContext} from './components/context'
+import PetDetails from './pages/PetDetails'
 
 function App() {
 
@@ -21,7 +22,6 @@ function App() {
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
   const [breeds, setBreeds] = useState(null)
-  const [filteredBreeds, setFilteredBreeds] = useState(null)
   const [url, setUrl] = useState(``)
   const [animal, setAnimal] = useState('')
   const [zip, setZip] = useState('')
@@ -29,6 +29,13 @@ function App() {
   const [selectedBreed, setSelectedBreed] = useState(null)
   const [filteredBreed, setFilteredBreed] = useState(null)
   const [filteredPage, setFilteredPage] = useState(1)
+  const [image, setImage] = useState('')
+  const [desc, setDesc] = useState('')
+  const [gender, setGender] = useState('')
+  const [breed, setBreed] = useState('')
+  const [status, setStatus] = useState('')
+  const [attributes, setAttributes] = useState('')
+  const [location, setLocation] = useState('')
   
 
   
@@ -65,30 +72,36 @@ function App() {
 
       
       <div className="App">
-        <TokenContext.Provider value={{token, pets, setPets, loaded, setLoaded, page, setPage, totalResults, setTotalResults, breeds, setBreeds, filteredBreed, setFilteredBreed, url, setUrl, miles, setMiles, zip, setZip, animal, setAnimal, selectedBreed, setSelectedBreed, filteredPage, setFilteredPage}}>
-          
-             
-             
+        <TokenContext.Provider value={{token, 
+          pets, setPets, 
+          loaded, setLoaded, 
+          page, setPage, 
+          totalResults, setTotalResults, 
+          breeds, setBreeds, 
+          filteredBreed, setFilteredBreed, 
+          url, setUrl, 
+          miles, setMiles, 
+          zip, setZip, 
+          animal, setAnimal, 
+          selectedBreed, setSelectedBreed, 
+          filteredPage, setFilteredPage,
+          image, setImage,
+          gender, setGender,
+          desc, setDesc, 
+          breed, setBreed, 
+          status, setStatus,
+          attributes, setAttributes,
+          location, setLocation}}>
             <Header />
              <Switch>
-             <Route path='/' exact component={Hero}/>
-            
-            
-             
-            <Route path='/searchresults'  component={SearchResults} />
-            <Route path='/filteredresults' component={FilteredResults} />
+              <Route path='/' exact component={Hero}/>
+              <Route path='/searchresults'  component={SearchResults} />
+              <Route path='/filteredresults' component={FilteredResults} />
+              <Route path='/petdetails' component={PetDetails} />
              </Switch>
-            
-
-             
-                 <Footer />
-             
-           
-          
+            <Footer />
         </TokenContext.Provider>
-      
-      
-    </div>
+      </div>
     
     
     
