@@ -107,6 +107,51 @@ ul.pagination li a.active {
   margin-top: 10px;
 }
 
+.pet-details-text{
+  padding: 8px;
+}
+.cta-link{
+  color: #fff;
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  font-size: 40px;
+  font-weight: 300;
+  text-decoration: none; 
+  padding: 32px;
+  transition: 0.3s;
+}
+
+.pet-details-cta{
+  height: 32px;
+
+  background: linear-gradient(to right, #3AAFA9 50%, #1E1E1E 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+.pet-details-cta:hover{
+  background-position: left bottom;
+}
+.form-submit{
+  display: block;
+  height: 80px; 
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  background: linear-gradient(to right, #3AAFA9 50%, #1E1E1E 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+.form-submit:hover{
+  background-position: left bottom;
+  color:
+}
 @media (max-width: 900px) {
   .hero-text{
     margin-top: 40px;
@@ -116,6 +161,8 @@ ul.pagination li a.active {
     width: 90%;
   }
 }
+
+
 
 .loader,
 .loader:before,

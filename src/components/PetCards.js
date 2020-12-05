@@ -23,7 +23,24 @@ function PetCards(props) {
   
     return (
       petInfo.loaded ? (<Card >
-        <CardActionArea href={props.url} target="_blank" rel="noopener" rel="noreferrer" onClick={() => petInfo.setName(props.name), petInfo.setImage(props.img)}>
+        <CardActionArea
+          href={props.url} 
+          target="_blank" 
+          rel="noopener" 
+          rel="noreferrer" 
+          onClick={
+            () => {petInfo.setName(props.name); 
+              petInfo.setImage(props.detailImg); 
+              petInfo.setBreed(props.breed); 
+              petInfo.setDesc(props.desc); 
+              petInfo.setAttributes(props.attributes); 
+              petInfo.setStatus(props.status);
+              petInfo.setPetUrl(props.url);
+              petInfo.setBreed(props.breed);
+              petInfo.setSize(props.size);
+              petInfo.setGender(props.gender);}
+            } 
+        >
           <Link to='/petdetails'>
           <CardMedia
             className={classes.media}

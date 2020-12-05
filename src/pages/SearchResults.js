@@ -26,7 +26,10 @@ function SearchResults(props) {
         petInfo.setLoaded(true)
         window.scroll(0,0)
   }
+
   
+
+
     return(
         <Grid container spacing={2} style={{marginTop: '60px'}}>
             <Grid item xs={false} sm={1} />
@@ -47,7 +50,9 @@ function SearchResults(props) {
                                                 desc={pet.description}
                                                 url={pet.url}
                                                 img={pet.photos[0]?.large}
-                                                
+                                                detailImg={pet.photos[0]?.full}
+                                                attributes={pet.attributes}
+                                                status={pet.status}
                                                 
                                             />
                                         </Grid> 
