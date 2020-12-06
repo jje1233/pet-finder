@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Grid} from '@material-ui/core'
 import FilterBar from '../components/FilterBar'
 import TokenContext from '../components/context'
@@ -10,6 +10,12 @@ import SearchBar from '../components/SearchBar'
 
 function SearchResults(props) {
     const petInfo = useContext(TokenContext)
+    useEffect(()=>{
+        let data = localStorage.getItem('pets')
+        data = JSON.parse(data)
+        petInfo.setPets(data)
+    },[])
+
     const handleChange = async (pageNumber) => {
         
         const data = await fetch(`https://api.petfinder.com/v2/animals?type=${petInfo.animal}&location=${petInfo.zip}&distance=${petInfo.miles}&page=${pageNumber}`, {

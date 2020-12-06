@@ -90,7 +90,7 @@ const  submitWrapperFunction = async (event) => {
         }
     })
     .then((data => data.json()))
-    let petStorage= localStorage.setItem('pets', data)
+    localStorage.setItem('pets', JSON.stringify(data))
     petInfo.setPets(data)
     
     console.log(data)

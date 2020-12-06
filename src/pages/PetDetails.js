@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Grid, TextField} from '@material-ui/core'
 import TokenContext from '../components/context'
 
@@ -6,6 +6,26 @@ import TokenContext from '../components/context'
 
 function PetDetails(){
     const petInfo = useContext(TokenContext)
+    
+
+    useEffect(() =>{
+        window.scrollTo(0,0);
+        let details = localStorage.getItem('petDetails');
+        details = JSON.parse(details)
+        petInfo.setName(details.name); 
+        petInfo.setImage(details.image); 
+        petInfo.setDesc(details.desc); 
+        petInfo.setAttributes(details.attributes); 
+        petInfo.setStatus(details.status);
+        petInfo.setPetUrl(details.url);
+        petInfo.setBreed(details.breed);
+        petInfo.setSize(details.size);
+        petInfo.setGender(details.gender);
+    },[])
+
+    const submitHandler = (e) =>{
+        e.preventDefault()
+    }
     return(
         <Grid container style={{marginTop: '60px'}}>
             <Grid item container>
@@ -26,6 +46,7 @@ function PetDetails(){
                         
                         <p className='pet-details-text'>Details: {petInfo.desc}<a href={petInfo.petUrl}>View More</a></p>
                         <p className='pet-details-text'>Adoption status: {petInfo.status}</p>
+                        <p className='pet-details-text'>Spayed or neutered?: {petInfo.attributes.spayed_neutered ? 'Yes' : 'No'}</p>
                         <p className='pet-details-text'>Current on shots?: {petInfo.attributes.shots_current ? 'Up to date' : 'No'}</p>
                         <p className='pet-details-text'>House training status: {petInfo.attributes.trained ? 'Trained' : 'Not trained'} </p>
                         <p className='pet-details-text'>Special needs status: {petInfo.attributes.special_needs ? <><p>Yes. <a href={petInfo.petUrl}>View More</a></p></> : 'None' }</p>
@@ -55,7 +76,7 @@ function PetDetails(){
                             <input type='text' placeholder='First Name'  style={{fontSize: '20px', width: '45%', margin: '8px 0', padding: '16px', background: 'transparent', outline: 'none', border: 'none', borderBottom: '1px solid black', marginLeft: '10%'}}/>
                             <textarea type='text' placeholder='Message'  style={{fontSize: '20px', fontFamily: 'Open Sans', fontWeight: '600', width: '100%', margin: '8px 0', paddingLeft: '16px', background: 'transparent', outline: 'none', border: 'none', borderBottom: '1px solid black'}}/>
                             <center>
-                            <input type='submit' placeholder='submit' className='form-submit'/>
+                            <input type='submit' placeholder='submit' className='form-submit' onClick={submitHandler}/>
                             </center>
                             
                         </form>
