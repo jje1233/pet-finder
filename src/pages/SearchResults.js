@@ -10,11 +10,8 @@ import SearchBar from '../components/SearchBar'
 
 function SearchResults(props) {
     const petInfo = useContext(TokenContext)
-    useEffect(()=>{
-        let data = localStorage.getItem('pets')
-        data = JSON.parse(data)
-        petInfo.setPets(data)
-    },[])
+    
+    
 
     const handleChange = async (pageNumber) => {
         
@@ -25,7 +22,7 @@ function SearchResults(props) {
             }
         })
         .then((data => data.json()))
-        petInfo.setPets(data)
+        petInfo.setPets(data) 
         
         console.log(data)
         petInfo.setPage(pageNumber)

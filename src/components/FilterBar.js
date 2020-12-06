@@ -112,7 +112,27 @@ const classes = useStyles();
                     </RadioGroup>
                 </AccordionDetails>
                     
-            </Accordion> <button style={{width: '100%', height: '60px', backgroundColor: '#17252A', fontSize: '20px', outline: 'none', border: 'none', borderRadius: '8px', cursor: 'pointer'}}onClick={addFilters}><Link to='/filteredresults' style={{textDecoration: 'none', color: '#3AAFA9'}}>APPLY FILTER</Link></button></>) : ('')}
+            </Accordion> 
+              <button 
+                style={{
+                  width: '100%', 
+                  height: '60px', 
+                  backgroundColor: '#17252A', 
+                  fontSize: '20px', 
+                  outline: 'none', 
+                  border: 'none', 
+                  borderRadius: '8px', 
+                  cursor: 'pointer'
+                }}
+                onClick={addFilters}>
+                <Link to='/filteredresults' 
+                  style={{
+                    textDecoration: 'none', 
+                    color: '#3AAFA9'
+                    }}>
+                      APPLY FILTER
+                </Link>
+              </button></>) : ('')}
            
 
             

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Grid} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -45,6 +45,13 @@ function SearchBar() {
 
 const petInfo = useContext(TokenContext)
 const classes = useStyles();
+useEffect(()=>{
+  let data = localStorage.getItem('pets')
+  data = JSON.parse(data)
+  petInfo.setPets(data)
+  petInfo.setBreeds(data)
+  
+},[])
 
 const [petName, setPetName] = useState({
     name: 'pet',
@@ -89,8 +96,9 @@ const  submitWrapperFunction = async (event) => {
         'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    .then((data => data.json()))
+    .then((data => data.json() ))
     localStorage.setItem('pets', JSON.stringify(data))
+    
     petInfo.setPets(data)
     
     console.log(data)
