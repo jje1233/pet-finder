@@ -45,13 +45,7 @@ function SearchBar() {
 
 const petInfo = useContext(TokenContext)
 const classes = useStyles();
-useEffect(()=>{
-  let data = localStorage.getItem('pets')
-  data = JSON.parse(data)
-  petInfo.setPets(data)
-  petInfo.setBreeds(data)
-  
-},[])
+
 
 const [petName, setPetName] = useState({
     name: 'pet',
