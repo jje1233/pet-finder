@@ -124,7 +124,6 @@ ul.pagination li a.active {
 
 .pet-details-cta{
   height: 32px;
-
   background: linear-gradient(to right, #3AAFA9 50%, #1E1E1E 50%);
   background-size: 200% 100%;
   background-position: right bottom;
