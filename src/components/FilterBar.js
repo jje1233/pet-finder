@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import TokenContext from './context'
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -33,23 +33,17 @@ const useStyles = makeStyles((theme) => ({
   
 function FilterBar() {
     const petInfo = useContext(TokenContext)
+    useEffect(()=>{
+      let data = localStorage.getItem('petBreeds')
+      data = JSON.parse(data)
+      petInfo.setBreeds(data)
+      petInfo.setLoaded(true)
+    },[])
 
-    const [state, setState] = useState({
-        baby: false,
-        young: false,
-        adult: false,
-        senior: false,
-        female: false, 
-        male: false, 
-        small: false,
-        medium: false,
-        large: false,
-        xLarge: false,
-
-      });
+    const handleBreed = (event) => {
+      petInfo.setSelectedBreed(event.target.value);
+    };
       
-      
-
       const addFilters = async (e) => {
           e.preventDefault()
 
@@ -69,9 +63,7 @@ function FilterBar() {
         
 
       
-      const handleBreed = (event) => {
-        petInfo.setSelectedBreed(event.target.value);
-      };
+      
       
     
 

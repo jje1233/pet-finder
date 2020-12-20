@@ -15,6 +15,8 @@ const useStyles = makeStyles({
     height: 360,
   },
 });
+
+
 function PetCards(props) {
   
   const classes = useStyles();
@@ -31,36 +33,31 @@ function PetCards(props) {
     petInfo.setSize(props.size);
     petInfo.setGender(props.gender);
     
+    
       localStorage.setItem('petDetails', 
-              JSON.stringify(
-                {
-                  name: props.name,
-                  image: props.detailImg,
-                  breed: props.breed,
-                  desc: props.desc,
-                  attributes: props.attributes,
-                  status: props.status,
-                  url: props.url,
-                  gender: props.gender,
-                  size: props.size
-                }
-              )
+      JSON.stringify(
+        {
+          name: props.name,
+          image: props.detailImg,
+          breed: props.breed,
+          desc: props.desc,
+          attributes: props.attributes,
+          status: props.status,
+          url: props.url,
+          gender: props.gender,
+          size: props.size
+        }
       )
-  
-  
+    )
     
   }
-  
-
-  
-  
     return (
       petInfo.loaded ? (<Card >
         <CardActionArea
           href={props.url} 
           target="_blank" 
-          rel="noopener" 
-          rel="noreferrer" 
+          rel="noopener noreferrer" 
+          
           onClick={petAssignHandler} 
         >
           <Link to='/petdetails'>
@@ -82,7 +79,7 @@ function PetCards(props) {
         </CardActionArea>
         <CardActions>
           
-          <Button size="small" color="primary" href={props.url} target="_blank" rel="noopener" rel="noreferrer">
+          <Button size="small" color="primary" href={props.url} target="_blank" rel="noopener noreferrer">
             Learn More
           </Button>
         </CardActions>

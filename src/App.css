@@ -146,6 +146,7 @@ ul.pagination li a.active {
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all .5s ease-out;
+  cursor: pointer;
 }
 .form-submit:hover{
   background-position: left bottom;

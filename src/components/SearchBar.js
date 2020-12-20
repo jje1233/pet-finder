@@ -82,36 +82,43 @@ const  submitWrapperFunction = async (event) => {
     
     const miles = document.querySelector('#miles').value
     petInfo.setMiles(miles)
-    petInfo.setUrl(`https://api.petfinder.com/v2/types/${animal}/breeds`)
-    console.log(petInfo.url)
-    const data = await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
+    
+    fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    .then((data => data.json() ))
+    .then(response => response.json())
+    .then(data =>{
+
     localStorage.setItem('pets', JSON.stringify(data))
-    
+
     petInfo.setPets(data)
     
     console.log(data)
     petInfo.setTotalResults(data.pagination.total_count) 
     petInfo.setLoaded(true)
+    })
+    .catch(error => console.log('Error is: ', error)) 
+    
   }
   const handleBreeds = async () => {
     const animal = document.querySelector('#pet').value
-    
-    
-    const data = await fetch(`https://api.petfinder.com/v2/types/${animal}/breeds`, {
+    fetch(`https://api.petfinder.com/v2/types/${animal}/breeds`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
         }
     })
-    .then((data => data.json()))
-    petInfo.setBreeds(data)
-    console.log(data)
+    .then(response => response.json())
+    .then(data =>{
+      localStorage.setItem('petBreeds', JSON.stringify(data))
+      petInfo.setBreeds(data)
+      console.log(data)
+    })
+    .catch(error => console.log('Error is: ', error))
+    
   }
   handleSubmit();
   handleBreeds();

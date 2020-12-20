@@ -10,6 +10,13 @@ import SearchBar from '../components/SearchBar'
 
 function SearchResults(props) {
     const petInfo = useContext(TokenContext)
+    useEffect(()=>{
+        let data = localStorage.getItem('pets')
+        data = JSON.parse(data)
+        petInfo.setPets(data)
+        petInfo.setLoaded(true)
+      }, [])
+    
     
     
 
