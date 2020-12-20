@@ -60,7 +60,6 @@ function App() {
       const token = await apiCall.json()
       
       setToken(token.access_token)
-      console.log(token)
     }
 
     useEffect(()=>{
