@@ -33,12 +33,7 @@ const useStyles = makeStyles((theme) => ({
   
 function FilterBar() {
     const petInfo = useContext(TokenContext)
-    useEffect(()=>{
-      let data = localStorage.getItem('petBreeds')
-      data = JSON.parse(data)
-      petInfo.setBreeds(data)
-      petInfo.setLoaded(true)
-    },[])
+    
 
     const handleBreed = (event) => {
       petInfo.setSelectedBreed(event.target.value);
