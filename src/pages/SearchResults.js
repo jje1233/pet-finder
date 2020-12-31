@@ -10,10 +10,6 @@ import SearchBar from '../components/SearchBar'
 
 function SearchResults(props) {
     const petInfo = useContext(TokenContext)
-    
-    
-    
-    
 
     const handleChange = async (pageNumber) => {
         
@@ -31,9 +27,6 @@ function SearchResults(props) {
         petInfo.setLoaded(true)
         window.scroll(0,0)
   }
-
-  
-
 
     return(
         <Grid container spacing={2} style={{marginTop: '60px'}}>

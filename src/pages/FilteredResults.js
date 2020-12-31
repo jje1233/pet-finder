@@ -48,7 +48,9 @@ function FilteredResults(props) {
                                             desc={pet.description}
                                             url={pet.url}
                                             img={pet.photos[0]?.large}
-                                            
+                                            detailImg={pet.photos[0]?.full}
+                                            attributes={pet.attributes}
+                                            status={pet.status}
                                             
                                         />
                                     </Grid> 
@@ -77,18 +79,3 @@ function FilteredResults(props) {
 }
 
 export default FilteredResults
-
-
-/* 
-<Grid item xs={12}>
-                            <Pagination 
-                                activePage={petInfo.page}
-                                
-                                itemsCountPerPage={petInfo.totalResults / 20}
-                                totalItemsCount={petInfo.totalResults}
-                                pageRangeDisplayed={5}
-                                onChange={handleChange}
-                            />
-                        </Grid> 
-
-                        */
