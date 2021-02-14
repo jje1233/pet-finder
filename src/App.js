@@ -41,6 +41,9 @@ function App() {
   const [petUrl, setPetUrl] = useState('')
   const [size, setSize] = useState('')
   const [trained, setTrained] = useState('')
+  const [organizations, setOrganizations] = useState('')
+  const [orgZip, setOrgZip] = useState('')
+  const [loadedOrganizations, setLoadedOrganizations] = useState(false)
 
   
 
@@ -95,7 +98,10 @@ function App() {
           location, setLocation,
           petUrl, setPetUrl,
           size, setSize,
-          trained, setTrained}}>
+          trained, setTrained,
+          organizations, setOrganizations,
+          orgZip, setOrgZip,
+          loadedOrganizations, setLoadedOrganizations}}>
             <Header />
              <Switch>
               <Route path='/' exact component={Hero}/>

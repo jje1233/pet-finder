@@ -1,10 +1,12 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import FeaturedCards from './FeaturedCards'
+import HomeShelterSearch from './HomeShelterSearch'
 
 
 function Hero() {
         return (
-
+                <>
                 <div className='hero-div'>
                     <div className='hero-text'>
                         <h1 style={{fontSize:'60px'}}>Furever Friend Finder</h1>
@@ -13,7 +15,15 @@ function Hero() {
                     <div className='hero-search'>
                         <SearchBar />
                     </div>
+                    
                 </div>
+                <div className='featured-hero'>
+                    <FeaturedCards />    
+                </div>
+                <div className='home-shelter-hero'>
+                    <HomeShelterSearch />
+                </div>
+                </>
                    
 
         );
