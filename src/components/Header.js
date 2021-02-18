@@ -43,11 +43,6 @@ const drawerItems = [
     icon: <HomeIcon href="#"/>,
     name: 'Home'
   },
-  {
-    id: 2,
-    icon: <PetsIcon />,
-    name: 'Pets (Coming Soon)'
-  },
 
 ]
 function Header() {

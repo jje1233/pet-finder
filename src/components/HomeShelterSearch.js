@@ -14,6 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import FormControl from '@material-ui/core/FormControl';
+import ShelterCards from './ShelterCards'
 
 
 function HomeShelterSearch(){
@@ -83,10 +84,11 @@ const mileHandler = (event) => {
             </div>
             <div className='home-shelter-search-container'>
                 <form className='home-shelter-search-bar'>
-                  <FormControl >
-                    <TextField required fullWidth  id='orgZip' label="Zip Code" />
+                  
+                    <TextField required   id='orgZip' label="Zip Code" />
+                      <div>
                       <InputLabel  htmlFor="miles">Miles</InputLabel>
-                      <NativeSelect fullWidth required  
+                      <NativeSelect  required  
                       value={miles.miles}
                       onChange={mileHandler}
                       inputProps={{
@@ -102,11 +104,13 @@ const mileHandler = (event) => {
                       <option value={100}>100</option>
                       <option value={250}>250</option>
                       </NativeSelect>
+                      </div>
+                      
                       <button type="submit" className='search-btn' onClick={handleSubmit}>
                       
                       <i className="fas fa-search"></i>
                       </button>
-                  </FormControl>
+                  
                     
                     
                    
@@ -117,9 +121,13 @@ const mileHandler = (event) => {
                         <div className='organizations'>
 
                             {petInfo.organizations.organizations.map(org =>{
-                                return  <div className='organization-row' key={org.id}>
-                                            <div><a href={org.url}>{org.name}</a> || {org.email} || {org.distance} miles away</div> 
-                                        </div>
+                                return   <ShelterCards 
+                                              url={org.url}
+                                              org={org.name}
+                                              email={org.email}
+                                              distance={parseFloat(org.distance).toFixed(2)}
+                                            />
+                                        
                              })}   
                         </div>
                         
