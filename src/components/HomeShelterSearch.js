@@ -13,6 +13,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import FormControl from '@material-ui/core/FormControl';
 
 
 function HomeShelterSearch(){
@@ -82,28 +83,31 @@ const mileHandler = (event) => {
             </div>
             <div className='home-shelter-search-container'>
                 <form className='home-shelter-search-bar'>
-                    <TextField fullWidth  id='orgZip' label="Zip Code"/>
-                    <InputLabel  htmlFor="miles">Miles</InputLabel>
-                    <NativeSelect fullWidth   
-                    value={miles.miles}
-                    onChange={mileHandler}
-                    inputProps={{
-                        name: 'miles',
-                        id: 'miles',
-                    }}
-                    >
-                    <option aria-label="" value="" />
-                    <option value={5}>5</option>
-                    <option value={10}>10</option>
-                    <option value={25}>25</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option>
-                    <option value={250}>250</option>
-                    </NativeSelect>
-                    <button type="submit" className='search-btn' onClick={handleSubmit}>
+                  <FormControl >
+                    <TextField required fullWidth  id='orgZip' label="Zip Code" />
+                      <InputLabel  htmlFor="miles">Miles</InputLabel>
+                      <NativeSelect fullWidth required  
+                      value={miles.miles}
+                      onChange={mileHandler}
+                      inputProps={{
+                          name: 'miles',
+                          id: 'miles',
+                      }}
+                      >
+                      <option aria-label="" value="" />
+                      <option value={5}>5</option>
+                      <option value={10}>10</option>
+                      <option value={25}>25</option>
+                      <option value={50}>50</option>
+                      <option value={100}>100</option>
+                      <option value={250}>250</option>
+                      </NativeSelect>
+                      <button type="submit" className='search-btn' onClick={handleSubmit}>
+                      
+                      <i className="fas fa-search"></i>
+                      </button>
+                  </FormControl>
                     
-                    <i className="fas fa-search"></i>
-                    </button>
                     
                    
                     

@@ -53,6 +53,17 @@ const [petName, setPetName] = useState({
 const [miles, setMiles] = useState({
   miles: 100,
 })
+const [mainZip, setMainZip] = useState({
+    zip: null,
+})
+
+const zipHandler = (event) =>{
+  const zipCode = event.target.name
+  setMainZip({
+    ...mainZip,
+    zipCode: event.target.value,
+  })
+}
 const petHandler = (event) => {
     const name = event.target.name
     setPetName({
@@ -71,9 +82,8 @@ const mileHandler = (event) => {
 const  submitWrapperFunction = async (event) => {
   event.preventDefault()
   const handleSubmit = async () => {
-    const zip = document.querySelector('#zip').value
-    petInfo.setZip(zip)
-    if(!isValidZip(zip)){
+    
+    if(!isValidZip(mainZip.zipCode)){
       alert('Invalid zip code')
       return;
     }
@@ -83,7 +93,7 @@ const  submitWrapperFunction = async (event) => {
     const miles = document.querySelector('#miles').value
     petInfo.setMiles(miles)
     
-    await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}&distance=${miles}&page=${petInfo.page}`, {
+    await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${mainZip.zipCode}&distance=${miles}&page=${petInfo.page}`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -129,11 +139,11 @@ return (
         <form className={classes.root} noValidate id='pet-search' autoComplete="off" >
           <Grid container spacing={2} direction='row'>
             <Grid item xs={6} >
-                <TextField fullWidth  id='zip' label="Zip Code"/>
+                <TextField fullWidth  id='zip' label="Zip Code" required onChange={zipHandler} value={mainZip.zipCode}/>
             </Grid>
             <Grid item xs={2} >
                 <InputLabel className={classes.inpLbl} htmlFor="pet">Pet</InputLabel>
-                <NativeSelect fullWidth  className={classes.sel}
+                <NativeSelect fullWidth  className={classes.sel} required
                 value={petName.name}
                 onChange={petHandler}
                 inputProps={{
@@ -148,7 +158,7 @@ return (
             </Grid>
             <Grid item xs={2} >
             <InputLabel className={classes.inpLbl} htmlFor="pet">Miles</InputLabel>
-                <NativeSelect fullWidth  className={classes.sel} 
+                <NativeSelect fullWidth  className={classes.sel} required
                 value={miles.miles}
                 onChange={mileHandler}
                 inputProps={{
@@ -166,12 +176,12 @@ return (
                 </NativeSelect>
             </Grid>
             <Grid item xs={2} >
-              
-                <button type="submit" className='search-btn' onClick={submitWrapperFunction}>
+              {petName.name && mainZip.zipCode>0 ? (<button type="submit" className='search-btn' onClick={submitWrapperFunction}>
                 <Link to='/searchresults'>
                   <i className="fas fa-search"></i>
                   </Link>
-                </button>
+                </button>) : ('')}
+                
               
             
             </Grid>
