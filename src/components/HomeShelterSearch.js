@@ -56,7 +56,7 @@ const mileHandler = (event) => {
     const miles = document.querySelector('#miles').value
     petInfo.setMiles(miles)
     
-    await fetch(`https://api.petfinder.com/v2/organizations?location=${zip}&distance=${miles}`, {
+    await fetch(`https://api.petfinder.com/v2/organizations?location=${zip}&distance=${miles}&sort=distance`, {
     headers: {
         'Authorization': `Bearer ${petInfo.token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
