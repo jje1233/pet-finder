@@ -37,8 +37,8 @@ function PetDetails(){
             </Grid>
 
             <Grid item container style={{marginTop: '24px'}}>
-                <Grid item xs={false} sm={2} />
-                <Grid direction="column" item container xs={12} sm={10}>
+                <Grid item xs={false} sm={3} />
+                <Grid direction="column" item container xs={12} sm={8}>
                     <Grid direction="column" item xs={12} sm={10} style={{fontSize: '20px', background: '#fff', fontWeight: '300'}}>
                         <h1 style={{fontWeight: '400', padding: '8px'}}>Meet {petInfo.name}!</h1>
                         <h2 style={{fontWeight: '300', padding: '8px'}}>I'm a {petInfo.size} sized {petInfo.breed}.</h2>
@@ -64,8 +64,8 @@ function PetDetails(){
             </Grid>
             
             <Grid item container style={{marginTop: '24px', marginBottom: '60px'}}>
-                <Grid item xs={false} sm={2} />
-                <Grid item container direction="column" xs={12} sm={10} >
+                <Grid item xs={false} sm={3} />
+                <Grid item container direction="column" xs={12} sm={8} >
                     <Grid item direction='column' xs={12} sm={10} style={{background: '#fff'}}>
                         <h1 style={{fontWeight: '400'}}>Any questions regarding {petInfo.name}?</h1>
                         <h2 style={{fontWeight: '400', paddingTop: '16px'}}>Contact us here</h2>
