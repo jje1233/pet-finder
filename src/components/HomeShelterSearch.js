@@ -80,7 +80,7 @@ const mileHandler = (event) => {
     return(
         <div className='home-shelter-search-wrapper'>
             <div className='home-shelter-search-heading'>
-                <p>Rather browse in person? Find a shelter near you</p>
+                <p>Search for a shelter near you</p>
             </div>
             <div className='home-shelter-search-container'>
                 <form className='home-shelter-search-bar'>
