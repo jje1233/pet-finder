@@ -63,8 +63,8 @@ function Footer() {
         <AppBar position="static" className={classes.appbar}>
             <Toolbar style={isMobile ? {flexDirection: 'column', justifyContent: 'left'} : {flexDirection: 'row'}}>
                 
-                
-                <Grid item xs={12} md={3}>
+            <Grid xs={false} md={2}/>
+                <Grid item xs={12} md={2} >
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>ABOUT</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Our Mission</ListItemText>
@@ -84,7 +84,7 @@ function Footer() {
                     </List>
                 </Grid>
                 
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={2}>
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>PET ADOPTION</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Dog Adoption</ListItemText>
@@ -104,7 +104,7 @@ function Footer() {
                     </List>
                 </Grid>
                 
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={2}>
                     <List className={classes.list} component="nav" subheader={ <><ListSubheader component='div' id='list-subheader' className={classes.listSubheader}>PET CARE TOPICS</ListSubheader><Divider/></>}>
                     <ListItem button component='a'>
                         <ListItemText>Dog Care</ListItemText>
@@ -123,17 +123,27 @@ function Footer() {
                     </ListItem>
                     </List>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={2}>
                     <List className={classes.list}>
-                    <Typography variant="h4" className={classes.title}>
-                    Never miss a new pet
+                    <Typography variant="h5" className={classes.title}>
+                        Subscribe to Our Newsletter
                     </Typography>
-                    <Grid item >
-                    <input  id="newsletter" label="E-Mail" name="E-mail" placeholder='E-Mail Address' type='email' className={classes.textArea}></input><button className={classes.btn}>Submit</button>
-                    </Grid>
+                    <ListItem><input  id="newsletter" label="E-Mail" name="E-mail" placeholder='E-Mail Address' type='email' className={classes.textArea}></input><button className={classes.btn}>Submit</button> </ListItem>
+                    
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
+                    <ListItem> </ListItem>
                     
                     </List>
                 </Grid>
+                
             </Toolbar>   
         </AppBar>
         </Grid>  

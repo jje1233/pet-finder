@@ -92,6 +92,7 @@ const  submitWrapperFunction = async (event) => {
     
     const miles = document.querySelector('#miles').value
     petInfo.setMiles(miles)
+    petInfo.setZip(mainZip.zipCode)
     
     await fetch(`https://api.petfinder.com/v2/animals?type=${animal}&location=${mainZip.zipCode}&distance=${miles}&page=${petInfo.page}`, {
     headers: {

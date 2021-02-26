@@ -12,7 +12,7 @@ function FeaturedCards() {
     <div className='featured-cards-wrapper'>
         
         <div className='featured-cards-heading'>
-            <p>We make it easy to go from search to adoption within days</p>
+            <p>We make it easy to go from search to adoption within days!</p>
         </div>
         <div className='featured-cards-container'>
             

@@ -5,11 +5,11 @@
 }
 
 html, body{
-    background: 	#F5F5F5;
+    background: 	#FFF;
 }
 .hero-div{
   background-image: url('/Images/heroImg.jpg');
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
@@ -217,9 +217,10 @@ ul.pagination li a.active {
 }
 
 .featured-cards-wrapper{
-  height: 50vh;
+  height: 45vh;
   width: 100vw;
-
+  
+  
 }
 
 .featured-cards-heading{
@@ -240,7 +241,7 @@ ul.pagination li a.active {
 .featured-card{
   height: 100%;
   width: 25%;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .featured-card-img{
@@ -249,6 +250,7 @@ ul.pagination li a.active {
   margin: 0 auto;
   height: 45%;
   object-fit: fill;
+  border-radius: 8px;
 }
 
 .inner-card-heading{
@@ -269,8 +271,7 @@ ul.pagination li a.active {
 }
 
 .home-shelter-search-wrapper{
-  background: #fff;
-  background-color: #fff;
+ 
   height: 100%;
   width: 100%;
 }
@@ -294,6 +295,7 @@ ul.pagination li a.active {
   display: flex;
   flex-direction: row;
  justify-content: center;
+ margin-bottom: 1rem;
 }
 
 .organizations{
