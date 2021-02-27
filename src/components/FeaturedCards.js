@@ -17,19 +17,19 @@ function FeaturedCards() {
         <div className='featured-cards-container'>
             
             <div className='featured-card'>
-                <img src='Images/search.jpg' alt='' className="featured-card-img"/>
+                <i class="fas fa-search-location featured-font"></i>
                 <p className='inner-card-heading'>Search</p>
                 <p className='inner-card-body'>Search for anything from type of pet, breed, and distance desired. Currently supporting cats and dogs in the United States.</p>
             </div>
             
             <div className='featured-card'>
-                <img src='Images/apply.jpg' alt='' className="featured-card-img"/>
+                <i class="fas fa-pen-nib featured-font"></i>
                 <p className='inner-card-heading'>Apply</p>
                 <p className='inner-card-body'>The wellbeing of our rescue animals is our top priority. Home visits and an interview are a part of the process to esnure the right pet finds the right owner! </p>
             </div>
             
             <div className='featured-card'>
-                <img src='Images/love.jpg' alt='' className="featured-card-img"/>
+                <i class="far fa-heart featured-font"></i>
                 <p className='inner-card-heading'>Adopt</p>
                 <p className='inner-card-body'>Become a guardian for a pet in need and gain a new best friend!</p>
             </div>
