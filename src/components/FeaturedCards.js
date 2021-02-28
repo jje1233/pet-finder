@@ -25,7 +25,8 @@ function FeaturedCards() {
             <div className='featured-card'>
                 <i class="fas fa-pen-nib featured-font"></i>
                 <p className='inner-card-heading'>Apply</p>
-                <p className='inner-card-body'>The wellbeing of our rescue animals is our top priority. Home visits and an interview are a part of the process to esnure the right pet finds the right owner! </p>
+                <p className='inner-card-body'>The wellbeing of our rescue animals is our top priority. Home visits and an interview are a part of the process to esnure the right pet finds the right owner! <br></br></p>
+                
             </div>
             
             <div className='featured-card'>

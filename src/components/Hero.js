@@ -2,6 +2,7 @@ import React from 'react'
 import SearchBar from './SearchBar'
 import FeaturedCards from './FeaturedCards'
 import HomeShelterSearch from './HomeShelterSearch'
+import HomeArticles from './HomeArticles'
 
 
 function Hero() {
@@ -20,9 +21,13 @@ function Hero() {
                 <div className='featured-hero'>
                     <FeaturedCards />    
                 </div>
+                <div className='home-articles'>
+                    <HomeArticles />
+                </div>
                 <div className='home-shelter-hero'>
                     <HomeShelterSearch />
                 </div>
+
                 </>
                    
 

@@ -5,7 +5,7 @@
 }
 
 html, body{
-    background: 	#FFF;
+    background: 	#f5f5f5;
 }
 .hero-div{
   background-image: url('/Images/heroImg.jpg');
@@ -239,7 +239,7 @@ ul.pagination li a.active {
 .featured-card{
   height: 100%;
   width: 25%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .featured-font{
@@ -262,6 +262,84 @@ ul.pagination li a.active {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+
+.home-articles{
+  width: 100vw;
+  height: 100%;
+  margin: 2rem 0;
+  background: #fff;
+  background-color: #fff;
+}
+.home-articles-header{
+  text-align: center;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.home-articles-container{
+  width: 100%;
+  height: 100%;
+}
+
+.home-articles-wrapper{
+  height: 100%;
+  width: 60%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+.home-article-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 18%;
+  margin: auto;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.home-article-img{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: block;
+  object-fit: fill;
+  width: 100%;
+  height: 75%;
+}
+
+.home-article-card-body{
+  background: #fafafa;
+  background-color: #fafafa;
+  text-align: center;
+  height:30%;
+  border-bottom: 1px solid black;
+}
+
+.home-article-card-body p{
+  margin: 0.5rem 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.home-article-card-cta{
+  color: #3AAFA9;
+  background: linear-gradient(to right, #17252A 50%, #fafafa 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .3s ease-out;
+  text-align: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.home-article-card-cta:hover{
+  background-position: left bottom;
 }
 
 .home-shelter-hero{
@@ -334,5 +412,21 @@ ul.pagination li a.active {
   .featured-card{
     width: 55%;
     margin: 1rem auto;
+  }
+
+  .home-articles-wrapper{
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: left;
+    
+  }
+
+  .hcab-last{
+    margin: auto 0 !important;
+  }
+
+  .home-article-card{
+    width: 48%;
   }
 }
