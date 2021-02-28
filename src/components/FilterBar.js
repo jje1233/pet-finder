@@ -117,7 +117,7 @@ const classes = useStyles();
                     textDecoration: 'none', 
                     color: '#3AAFA9'
                     }}>
-                      APPLY FILTER
+                      Apply Filter
                 </Link>
               </button></>) : ('')}
            

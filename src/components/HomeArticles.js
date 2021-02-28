@@ -3,7 +3,7 @@ import React from 'react'
 function HomeArticles(){
     return(
         <div className='home-articles-container'>
-            <p className='home-articles-header'>Helpful Articles to Get Started Quickly</p>
+            <p className='home-articles-header'>Helpful articles to get started quickly</p>
             <div className='home-articles-wrapper'>
                 <div className='home-article-card'>
                     <img src='Images/pet-dog.jpg'  class='home-article-img' alt='dog'/>
